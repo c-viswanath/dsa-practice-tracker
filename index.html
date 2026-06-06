@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Striver A2Z DSA Tracker</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="shortcut icon" href="favicon.svg">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
@@ -177,8 +179,13 @@
 <div id="app">
   <div class="sidebar">
     <div class="sidebar-header">
-      <div class="sidebar-title">Striver A2Z <span class="sync-dot" id="sync-dot"></span></div>
-      <div class="sidebar-sub">DSA Practice Sheet</div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <img src="favicon.svg" width="22" height="22" style="border-radius:5px;flex-shrink:0">
+        <div>
+          <div class="sidebar-title">Striver A2Z <span class="sync-dot" id="sync-dot"></span></div>
+          <div class="sidebar-sub">DSA Practice Sheet</div>
+        </div>
+      </div>
     </div>
     <div class="user-bar">
       <div id="user-avatar-el"></div>

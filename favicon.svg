@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7c6af7"/>
+      <stop offset="100%" style="stop-color:#5b52cc"/>
+    </linearGradient>
+  </defs>
+  <!-- Background rounded square -->
+  <rect width="64" height="64" rx="14" fill="url(#bg)"/>
+  <!-- Checkmark path (top-left, represents "done") -->
+  <polyline points="13,22 19,28 27,18" fill="none" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+  <!-- Three list lines (representing problems) -->
+  <line x1="33" y1="20" x2="51" y2="20" stroke="white" stroke-width="3" stroke-linecap="round" opacity="0.9"/>
+  <!-- Checkmark path (middle) -->
+  <polyline points="13,34 19,40 27,30" fill="none" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.55"/>
+  <line x1="33" y1="32" x2="51" y2="32" stroke="white" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <!-- Checkmark path (bottom) -->
+  <polyline points="13,46 19,52 27,42" fill="none" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.3"/>
+  <line x1="33" y1="44" x2="45" y2="44" stroke="white" stroke-width="3" stroke-linecap="round" opacity="0.3"/>
+</svg>
