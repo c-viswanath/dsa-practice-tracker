@@ -127,6 +127,35 @@
 
   .empty-state { display:flex; flex-direction:column; align-items:center; justify-content:center; color:var(--text3); gap:8px; padding:60px 0; }
   * { scrollbar-width:thin; scrollbar-color:var(--border2) transparent; }
+
+  /* ── Solution / Notes tabs ── */
+  .panel-tabs { display:flex; border-bottom:1px solid var(--border); flex-shrink:0; }
+  .panel-tab { flex:1; padding:10px 0; text-align:center; font-size:12px; font-weight:500; cursor:pointer; color:var(--text3); border-bottom:2px solid transparent; transition:all 0.12s; user-select:none; }
+  .panel-tab.active { color:var(--text); border-bottom-color:var(--accent); }
+  .panel-tab:hover:not(.active) { color:var(--text2); }
+
+  /* Solution tab body */
+  .sol-body { flex:1; overflow-y:auto; display:flex; flex-direction:column; }
+  .sol-body::-webkit-scrollbar { width:3px; }
+  .sol-body::-webkit-scrollbar-thumb { background:var(--border2); border-radius:2px; }
+  .sol-links { padding:10px 14px 6px; display:flex; gap:6px; flex-wrap:wrap; border-bottom:1px solid var(--border); flex-shrink:0; }
+  .sol-cards { padding:10px 14px 16px; display:flex; flex-direction:column; gap:8px; }
+  .sol-card { background:var(--surface2); border:1px solid var(--border2); border-radius:6px; padding:10px 12px; }
+  .sol-card-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:5px; }
+  .sol-label { font-size:10.5px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; }
+  .sol-label.brute { color:#f87171; }
+  .sol-label.better { color:#fbbf24; }
+  .sol-label.optimal { color:#4ade80; }
+  .sol-complexity { font-size:10px; color:var(--text3); font-family:monospace; }
+  .sol-desc { font-size:12.5px; color:var(--text2); line-height:1.65; }
+  .sol-locked { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; color:var(--text3); padding:30px 20px; text-align:center; }
+  .sol-locked svg { opacity:0.35; }
+  .sol-locked p { font-size:12px; line-height:1.6; }
+  .sol-no-data { font-size:12px; color:var(--text3); padding:14px 0 4px; text-align:center; }
+
+  /* hide/show tabs */
+  .tab-pane { display:none; flex:1; flex-direction:column; overflow:hidden; }
+  .tab-pane.active { display:flex; }
 </style>
 </head>
 <body>
@@ -181,14 +210,27 @@
 
   <div class="notes-panel" id="notes-panel">
     <div class="notes-header">
-      <h3 id="notes-title">Notes</h3>
+      <h3 id="notes-title">—</h3>
       <div class="close-btn" onclick="closeNotes()">×</div>
     </div>
-    <div class="notes-links" id="notes-links"></div>
-    <textarea class="notes-textarea" id="notes-textarea" placeholder="Write your approach, complexity, edge cases…"></textarea>
-    <div class="notes-footer">
-      <span class="save-hint">Auto-saved to cloud</span>
-      <span class="saved-indicator" id="saved-indicator">Saved ✓</span>
+    <div class="panel-tabs">
+      <div class="panel-tab active" id="tab-notes" onclick="switchTab('notes')">Notes</div>
+      <div class="panel-tab" id="tab-solution" onclick="switchTab('solution')">Solution</div>
+    </div>
+
+    <!-- Notes pane -->
+    <div class="tab-pane active" id="pane-notes">
+      <div class="notes-links" id="notes-links"></div>
+      <textarea class="notes-textarea" id="notes-textarea" placeholder="Write your approach, complexity, edge cases…"></textarea>
+      <div class="notes-footer">
+        <span class="save-hint">Auto-saved to cloud</span>
+        <span class="saved-indicator" id="saved-indicator">Saved ✓</span>
+      </div>
+    </div>
+
+    <!-- Solution pane -->
+    <div class="tab-pane" id="pane-solution">
+      <div class="sol-body" id="sol-body"></div>
     </div>
   </div>
 </div>
@@ -802,8 +844,145 @@ const DATA = [
   ]},
 ];
 
+// ─── Solutions Data ───────────────────────────────────────────────────────────
+// steps label: "brute" | "better" | "optimal"
+const SOLUTIONS = {
+  // SORTING
+  s4:{tuf:"https://takeuforward.org/data-structure/merge-sort-algorithm/",nc:"https://neetcode.io/problems/sort-an-array",steps:[{label:"optimal",tc:"O(n log n)",sc:"O(n)",desc:"Divide array in half recursively, then merge two sorted halves back together using an auxiliary array."}]},
+  s5:{tuf:"https://takeuforward.org/data-structure/quick-sort-algorithm/",nc:"https://neetcode.io/problems/sort-an-array",steps:[{label:"optimal",tc:"O(n log n) avg",sc:"O(log n)",desc:"Pick a pivot, partition so left < pivot < right, recurse on both halves. Worst O(n²) when pivot is always min/max."}]},
+  // ARRAYS EASY
+  a4:{tuf:"https://takeuforward.org/data-structure/remove-duplicates-in-place-from-sorted-array/",nc:"https://neetcode.io/problems/remove-duplicates-from-sorted-array",steps:[{label:"brute",tc:"O(n log n)",sc:"O(n)",desc:"Use a set to collect uniques, copy back."},{label:"optimal",tc:"O(n)",sc:"O(1)",desc:"Two pointers: i = last unique, j = scanner. When nums[j] ≠ nums[i]: i++, nums[i]=nums[j]."}]},
+  a7:{tuf:"https://takeuforward.org/data-structure/move-all-zeroes-to-the-end-of-the-array/",nc:"https://neetcode.io/problems/move-zeros",steps:[{label:"optimal",tc:"O(n)",sc:"O(1)",desc:"j tracks next non-zero slot. When nums[i]≠0: swap(nums[i], nums[j]), j++."}]},
+  a10:{tuf:"https://takeuforward.org/data-structure/find-the-missing-number-in-an-array/",nc:"https://neetcode.io/problems/missing-number",steps:[{label:"brute",tc:"O(n²)",sc:"O(1)",desc:"For each 0..n, linear search in array."},{label:"better",tc:"O(n)",sc:"O(n)",desc:"Hash set of array values; scan 0..n for the missing one."},{label:"optimal",tc:"O(n)",sc:"O(1)",desc:"XOR all indices 0..n with all values — pairs cancel, leaving the missing number. Or: expected_sum − actual_sum."}]},
+  a11:{tuf:"https://takeuforward.org/data-structure/max-consecutive-ones/",steps:[{label:"optimal",tc:"O(n)",sc:"O(1)",desc:"Single pass: count current streak, reset to 0 on 0, update max on each 1."}]},
+  a12:{tuf:"https://takeuforward.org/data-structure/find-the-number-that-appears-once-and-the-other-numbers-twice/",nc:"https://neetcode.io/problems/single-number",steps:[{label:"brute",tc:"O(n²)",sc:"O(1)",desc:"For each element count occurrences."},{label:"better",tc:"O(n)",sc:"O(n)",desc:"Hash map of frequencies; return key with freq=1."},{label:"optimal",tc:"O(n)",sc:"O(1)",desc:"XOR all elements — pairs cancel (x^x=0), singleton survives."}]},
+  // ARRAYS MEDIUM
+  am1:{tuf:"https://takeuforward.org/data-structure/two-sum-check-if-a-pair-with-given-sum-exists-in-array/",nc:"https://neetcode.io/problems/two-integer-sum",steps:[{label:"brute",tc:"O(n²)",sc:"O(1)",desc:"Check every pair."},{label:"better",tc:"O(n log n)",sc:"O(1)",desc:"Sort + two pointers from both ends."},{label:"optimal",tc:"O(n)",sc:"O(n)",desc:"HashMap: for each num store num→index. Check if (target−num) already in map."}]},
+  am2:{tuf:"https://takeuforward.org/data-structure/sort-an-array-of-0s-1s-and-2s/",nc:"https://neetcode.io/problems/sort-colors",steps:[{label:"brute",tc:"O(n log n)",sc:"O(1)",desc:"Any comparison sort."},{label:"better",tc:"O(2n)",sc:"O(1)",desc:"Count 0s, 1s, 2s; overwrite array in two passes."},{label:"optimal",tc:"O(n)",sc:"O(1)",desc:"Dutch National Flag: lo=0, mid=0, hi=n−1. arr[mid]=0→swap(lo,mid),lo++,mid++. arr[mid]=1→mid++. arr[mid]=2→swap(mid,hi),hi--. Stop when mid>hi."}]},
+  am3:{tuf:"https://takeuforward.org/data-structure/find-the-majority-element-that-occurs-more-than-n-2-times/",nc:"https://neetcode.io/problems/majority-element",steps:[{label:"brute",tc:"O(n²)",sc:"O(1)",desc:"Count occurrences of each element."},{label:"better",tc:"O(n)",sc:"O(n)",desc:"Hash map of frequencies."},{label:"optimal",tc:"O(n)",sc:"O(1)",desc:"Boyer-Moore Voting: candidate + count. count=0 → set candidate=current. Match→count++, else count--. Candidate is the majority."}]},
+  am4:{tuf:"https://takeuforward.org/data-structure/kadanes-algorithm-maximum-subarray-sum/",nc:"https://neetcode.io/problems/maximum-subarray",steps:[{label:"brute",tc:"O(n³)",sc:"O(1)",desc:"Try all subarrays, compute each sum."},{label:"better",tc:"O(n²)",sc:"O(1)",desc:"Fix start, extend end with running sum."},{label:"optimal",tc:"O(n)",sc:"O(1)",desc:"Kadane's: currSum += num. If currSum < 0 reset to 0. Update maxSum = max(maxSum, currSum) at every step."}]},
+  am5:{tuf:"https://takeuforward.org/data-structure/stock-buy-and-sell/",nc:"https://neetcode.io/problems/buy-and-sell-crypto",steps:[{label:"brute",tc:"O(n²)",sc:"O(1)",desc:"Try every buy-sell pair."},{label:"optimal",tc:"O(n)",sc:"O(1)",desc:"Track minPrice seen so far. profit = price − minPrice. Update both each day."}]},
+  am7:{tuf:"https://takeuforward.org/data-structure/next_permutation-find-next-lexicographically-greater-permutation/",nc:"https://neetcode.io/problems/next-permutation",steps:[{label:"optimal",tc:"O(n)",sc:"O(1)",desc:"1) Find rightmost i where arr[i] < arr[i+1]. 2) Find rightmost j > i where arr[j] > arr[i]. 3) Swap i,j. 4) Reverse suffix after i."}]},
+  am9:{tuf:"https://takeuforward.org/data-structure/longest-consecutive-sequence-in-an-array/",nc:"https://neetcode.io/problems/longest-consecutive-sequence",steps:[{label:"brute",tc:"O(n²)",sc:"O(1)",desc:"For each element search for consecutive chain."},{label:"better",tc:"O(n log n)",sc:"O(1)",desc:"Sort; count consecutive run, skip duplicates."},{label:"optimal",tc:"O(n)",sc:"O(n)",desc:"Hash set of all nums. For each num, start streak only if (num−1) not in set (sequence start). Count up from there."}]},
+  am10:{tuf:"https://takeuforward.org/data-structure/set-matrix-zero/",nc:"https://neetcode.io/problems/set-matrix-zeroes",steps:[{label:"brute",tc:"O((nm)(n+m))",sc:"O(1)",desc:"Mark with sentinel, then zero rows/cols."},{label:"better",tc:"O(nm)",sc:"O(n+m)",desc:"Separate row[] and col[] boolean arrays."},{label:"optimal",tc:"O(nm)",sc:"O(1)",desc:"Use first row/col as markers. Handle cell [0][0] with a separate flag for the first column."}]},
+  am11:{tuf:"https://takeuforward.org/data-structure/rotate-image-by-90-degree/",nc:"https://neetcode.io/problems/rotate-image",steps:[{label:"brute",tc:"O(n²)",sc:"O(n²)",desc:"New matrix: place (i,j) at (j, n−1−i)."},{label:"optimal",tc:"O(n²)",sc:"O(1)",desc:"1) Transpose (swap arr[i][j] ↔ arr[j][i]). 2) Reverse each row."}]},
+  am12:{tuf:"https://takeuforward.org/data-structure/spiral-traversal-of-matrix/",nc:"https://neetcode.io/problems/spiral-matrix",steps:[{label:"optimal",tc:"O(nm)",sc:"O(1)",desc:"Maintain top/bottom/left/right boundaries. Traverse right→down→left→up, shrink boundary after each direction."}]},
+  // ARRAYS HARD
+  ah1:{tuf:"https://takeuforward.org/data-structure/program-to-generate-pascals-triangle/",nc:"https://neetcode.io/problems/pascals-triangle",steps:[{label:"optimal",tc:"O(n²)",sc:"O(n²)",desc:"Each row starts/ends with 1. row[j] = prevRow[j−1] + prevRow[j]. Build row by row."}]},
+  ah2:{tuf:"https://takeuforward.org/data-structure/majority-elementsn-3-times-find-the-elements-that-appears-more-than-n-3-times-in-the-array/",nc:"https://neetcode.io/problems/majority-element-ii",steps:[{label:"brute",tc:"O(n²)",sc:"O(1)",desc:"Count occurrences of each element."},{label:"better",tc:"O(n)",sc:"O(n)",desc:"Hash map, filter freq > n/3."},{label:"optimal",tc:"O(n)",sc:"O(1)",desc:"Extended Boyer-Moore with 2 candidates + 2 counts. First pass: find candidates. Second pass: verify they actually exceed n/3."}]},
+  ah3:{tuf:"https://takeuforward.org/data-structure/3-sum-find-triplets-that-add-up-to-a-zero/",nc:"https://neetcode.io/problems/three-integer-sum",steps:[{label:"brute",tc:"O(n³)",sc:"O(k)",desc:"Three nested loops, deduplicate."},{label:"better",tc:"O(n²)",sc:"O(n)",desc:"Sort + for each i, use hash set for two-sum."},{label:"optimal",tc:"O(n²)",sc:"O(1)",desc:"Sort. Fix i, two pointers l=i+1, r=n−1. sum<0→l++, sum>0→r--, sum=0→record & skip duplicates."}]},
+  ah7:{tuf:"https://takeuforward.org/data-structure/merge-overlapping-sub-intervals/",nc:"https://neetcode.io/problems/merge-intervals",steps:[{label:"optimal",tc:"O(n log n)",sc:"O(n)",desc:"Sort by start. Iterate: if curr.start ≤ last.end → extend last.end = max(last.end, curr.end). Else push curr as new interval."}]},
+  ah9:{tuf:"https://takeuforward.org/data-structure/find-the-repeating-and-missing-numbers/",steps:[{label:"brute",tc:"O(n²)",sc:"O(1)",desc:"Count occurrences of each 1..n."},{label:"better",tc:"O(n)",sc:"O(n)",desc:"Hash map: repeating has freq=2, missing has freq=0."},{label:"optimal",tc:"O(n)",sc:"O(1)",desc:"Math: S = sum(arr), S² = sum(arr²). Use expected sums for 1..n to derive two equations and solve for repeating X and missing Y."}]},
+  ah10:{tuf:"https://takeuforward.org/data-structure/count-inversions-in-an-array/",steps:[{label:"brute",tc:"O(n²)",sc:"O(1)",desc:"For each pair (i<j), check if arr[i]>arr[j]."},{label:"optimal",tc:"O(n log n)",sc:"O(n)",desc:"Modified merge sort: when a right-half element is placed before left-half elements, add count of remaining left elements to inversions."}]},
+  ah11:{tuf:"https://takeuforward.org/data-structure/count-reverse-pairs/",nc:"https://neetcode.io/problems/reverse-pairs",steps:[{label:"brute",tc:"O(n²)",sc:"O(1)",desc:"Check all pairs: i<j and arr[i]>2*arr[j]."},{label:"optimal",tc:"O(n log n)",sc:"O(n)",desc:"Modified merge sort: before merging, use two pointers to count valid pairs across left and right halves."}]},
+  ah12:{tuf:"https://takeuforward.org/data-structure/maximum-product-subarray-in-an-array/",nc:"https://neetcode.io/problems/maximum-product-subarray",steps:[{label:"brute",tc:"O(n²)",sc:"O(1)",desc:"Try all subarrays."},{label:"optimal",tc:"O(n)",sc:"O(1)",desc:"Track maxProd and minProd simultaneously (negative×negative = positive). new_max = max(num, maxP*num, minP*num), similarly for min."}]},
+  // BINARY SEARCH
+  bs1:{tuf:"https://takeuforward.org/data-structure/binary-search-explained/",nc:"https://neetcode.io/problems/binary-search",steps:[{label:"optimal",tc:"O(log n)",sc:"O(1)",desc:"lo=0, hi=n−1. mid=(lo+hi)/2. If arr[mid]=target: found. If arr[mid]<target: lo=mid+1. Else: hi=mid−1."}]},
+  bs4:{tuf:"https://takeuforward.org/arrays/search-insert-position/",nc:"https://neetcode.io/problems/search-insert-position",steps:[{label:"optimal",tc:"O(log n)",sc:"O(1)",desc:"Lower bound binary search: find first index where arr[mid] ≥ target."}]},
+  bs8:{tuf:"https://takeuforward.org/data-structure/search-element-in-a-rotated-sorted-array/",nc:"https://neetcode.io/problems/find-target-in-rotated-sorted-array",steps:[{label:"optimal",tc:"O(log n)",sc:"O(1)",desc:"One half is always sorted. Check which half is sorted, determine if target falls in it, narrow accordingly."}]},
+  bs10:{tuf:"https://takeuforward.org/data-structure/minimum-element-in-a-rotated-sorted-array/",nc:"https://neetcode.io/problems/find-minimum-in-rotated-sorted-array",steps:[{label:"optimal",tc:"O(log n)",sc:"O(1)",desc:"If arr[mid] > arr[hi]: min is in right half. Else it's in left half (including mid). Track ans = min(ans, arr[mid])."}]},
+  bs12:{tuf:"https://takeuforward.org/data-structure/single-element-in-a-sorted-array/",nc:"https://neetcode.io/problems/single-element-in-a-sorted-array",steps:[{label:"optimal",tc:"O(log n)",sc:"O(1)",desc:"Pairs sit at (even,odd) indices. If arr[mid]=arr[mid^1], single is in right half. Else in left half."}]},
+  bs13:{tuf:"https://takeuforward.org/data-structure/peak-element-in-array/",nc:"https://neetcode.io/problems/find-peak-element",steps:[{label:"optimal",tc:"O(log n)",sc:"O(1)",desc:"If arr[mid] > arr[mid+1]: peak is in left half (including mid). Else peak is in right half. Binary search on this condition."}]},
+  bsa1:{tuf:"https://takeuforward.org/data-structure/find-nth-root-of-a-number-using-binary-search/",nc:"https://neetcode.io/problems/sqrt",steps:[{label:"optimal",tc:"O(log n)",sc:"O(1)",desc:"Binary search on answer [1,n]: find largest mid where mid*mid ≤ n."}]},
+  bsa3:{tuf:"https://takeuforward.org/binary-search/koko-eating-bananas/",nc:"https://neetcode.io/problems/eating-bananas",steps:[{label:"brute",tc:"O(max*n)",sc:"O(1)",desc:"Try every speed 1..max."},{label:"optimal",tc:"O(n log max)",sc:"O(1)",desc:"Binary search on speed [1, max(piles)]. hours = Σceil(pile/k). Find minimum k where hours ≤ h."}]},
+  bsa6:{tuf:"https://takeuforward.org/arrays/capacity-to-ship-packages-within-d-days/",nc:"https://neetcode.io/problems/capacity-to-ship-packages-within-d-days",steps:[{label:"optimal",tc:"O(n log S)",sc:"O(1)",desc:"Binary search on capacity [max(w), sum(w)]. Simulate days needed greedily. Find minimum valid capacity."}]},
+  bsa13:{tuf:"https://takeuforward.org/data-structure/median-of-two-sorted-arrays/",nc:"https://neetcode.io/problems/median-of-two-sorted-arrays",steps:[{label:"brute",tc:"O(n+m)",sc:"O(n+m)",desc:"Merge arrays, find median."},{label:"better",tc:"O(n+m)",sc:"O(1)",desc:"Two pointers, stop at median position."},{label:"optimal",tc:"O(log min(n,m))",sc:"O(1)",desc:"Binary search partition on smaller array. Find cut where max(left parts) ≤ min(right parts). Median = avg of those boundary values."}]},
+  bs2d2:{tuf:"https://takeuforward.org/data-structure/search-in-a-sorted-2d-matrix/",nc:"https://neetcode.io/problems/search-2d-matrix",steps:[{label:"optimal",tc:"O(log(nm))",sc:"O(1)",desc:"Treat matrix as 1D sorted array. mid→ row=mid/cols, col=mid%cols."}]},
+  bs2d3:{tuf:"https://takeuforward.org/data-structure/search-in-a-row-and-column-wise-sorted-matrix/",nc:"https://neetcode.io/problems/search-a-2d-matrix-ii",steps:[{label:"optimal",tc:"O(n+m)",sc:"O(1)",desc:"Start top-right. curr > target → move left. curr < target → move down."}]},
+  // STRINGS
+  str7:{tuf:"https://takeuforward.org/data-structure/check-if-two-strings-are-anagrams-of-each-other/",nc:"https://neetcode.io/problems/is-anagram",steps:[{label:"optimal",tc:"O(n)",sc:"O(1)",desc:"Count char frequencies in s, decrement for each char in t. Any non-zero count → not anagram."}]},
+  str14:{tuf:"https://takeuforward.org/data-structure/longest-palindromic-substring/",nc:"https://neetcode.io/problems/longest-palindromic-substring",steps:[{label:"brute",tc:"O(n³)",sc:"O(1)",desc:"Check every substring."},{label:"optimal",tc:"O(n²)",sc:"O(1)",desc:"Expand around center (n odd + n−1 even centers). Track maximum palindrome found."}]},
+  strh5:{tuf:"https://takeuforward.org/data-structure/kmp-algorithm/",nc:"https://neetcode.io/problems/find-the-index-of-the-first-occurrence-in-a-string",steps:[{label:"brute",tc:"O(nm)",sc:"O(1)",desc:"Try matching at every position."},{label:"optimal",tc:"O(n+m)",sc:"O(m)",desc:"Build LPS (longest proper prefix = suffix) array for pattern. Use it to skip redundant comparisons — never step back in text."}]},
+  // LINKED LIST
+  llm1:{tuf:"https://takeuforward.org/data-structure/find-middle-element-in-a-linked-list/",nc:"https://neetcode.io/problems/middle-of-linked-list",steps:[{label:"brute",tc:"O(n)",sc:"O(1)",desc:"Count length L, traverse to L/2."},{label:"optimal",tc:"O(n)",sc:"O(1)",desc:"Slow=1 step, Fast=2 steps. When fast reaches end, slow is at middle."}]},
+  llm2:{tuf:"https://takeuforward.org/data-structure/reverse-a-linked-list/",nc:"https://neetcode.io/problems/reverse-a-linked-list",steps:[{label:"iterative",tc:"O(n)",sc:"O(1)",desc:"prev=null, curr=head. Loop: next=curr.next, curr.next=prev, prev=curr, curr=next. Return prev."},{label:"recursive",tc:"O(n)",sc:"O(n)",desc:"Recurse to end. On return: node.next.next=node, node.next=null. Return tail."}]},
+  llm3:{tuf:"https://takeuforward.org/data-structure/detect-a-cycle-in-a-linked-list/",nc:"https://neetcode.io/problems/linked-list-cycle-detection",steps:[{label:"brute",tc:"O(n)",sc:"O(n)",desc:"Hash set of visited nodes."},{label:"optimal",tc:"O(n)",sc:"O(1)",desc:"Floyd's: slow=1 step, fast=2 steps. If they meet → cycle. If fast reaches null → no cycle."}]},
+  llm4:{tuf:"https://takeuforward.org/data-structure/starting-point-of-loop-in-a-linked-list/",nc:"https://neetcode.io/problems/linked-list-cycle-detection",steps:[{label:"optimal",tc:"O(n)",sc:"O(1)",desc:"1) Find meeting point (Floyd's). 2) Reset one pointer to head. 3) Move both 1 step — they meet at cycle start."}]},
+  llm8:{tuf:"https://takeuforward.org/data-structure/remove-nth-node-from-the-end-of-the-linked-list/",nc:"https://neetcode.io/problems/remove-node-from-end-of-linked-list",steps:[{label:"brute",tc:"O(2n)",sc:"O(1)",desc:"Find length, traverse to (len−n−1)th node."},{label:"optimal",tc:"O(n)",sc:"O(1)",desc:"Two pointers gap=N. Move fast N steps. Move both until fast.next=null. Delete slow.next."}]},
+  llm12:{tuf:"https://takeuforward.org/data-structure/find-intersection-of-two-linked-lists/",nc:"https://neetcode.io/problems/linked-list-intersection",steps:[{label:"brute",tc:"O(nm)",sc:"O(1)",desc:"For each node in A, scan all of B."},{label:"better",tc:"O(n+m)",sc:"O(n)",desc:"Hash set all nodes of A; traverse B until match."},{label:"optimal",tc:"O(n+m)",sc:"O(1)",desc:"Pointers a, b. When a reaches end redirect to headB; when b reaches end redirect to headA. They meet at intersection (or both null)."}]},
+  llm14:{tuf:"https://takeuforward.org/data-structure/add-two-numbers-represented-as-linked-lists/",nc:"https://neetcode.io/problems/add-two-numbers",steps:[{label:"optimal",tc:"O(max(n,m))",sc:"O(max(n,m))",desc:"Traverse both digit by digit with carry. Create new node for each sum digit. Handle remaining carry at end."}]},
+  llh1:{tuf:"https://takeuforward.org/data-structure/reverse-linked-list-in-groups-of-size-k/",nc:"https://neetcode.io/problems/reverse-nodes-in-k-group",steps:[{label:"optimal",tc:"O(n)",sc:"O(n/k)",desc:"Reverse first k nodes, then attach reverse(rest). If fewer than k nodes remain, keep as-is."}]},
+  llh4:{tuf:"https://takeuforward.org/data-structure/clone-linked-list-with-random-and-next-pointer/",nc:"https://neetcode.io/problems/copy-linked-list-with-random-pointer",steps:[{label:"better",tc:"O(n)",sc:"O(n)",desc:"HashMap orig→clone. Two passes: create clones, then wire next/random."},{label:"optimal",tc:"O(n)",sc:"O(1)",desc:"Interleave: A→A'→B→B'... Set random via interleave. Separate the two lists."}]},
+  // RECURSION
+  rec2:{tuf:"https://takeuforward.org/data-structure/implement-powxn-x-raised-to-the-power-n/",nc:"https://neetcode.io/problems/pow-x-n",steps:[{label:"brute",tc:"O(n)",sc:"O(1)",desc:"Multiply x n times."},{label:"optimal",tc:"O(log n)",sc:"O(log n)",desc:"Fast exponentiation: n even → pow(x*x, n/2). n odd → x * pow(x*x, (n−1)/2). Handle negative n."}]},
+  sub2:{tuf:"https://takeuforward.org/data-structure/generate-parentheses/",nc:"https://neetcode.io/problems/generate-parentheses",steps:[{label:"optimal",tc:"O(4ⁿ/√n)",sc:"O(n)",desc:"Backtrack with open/close counts. Add '(' if open<n. Add ')' if close<open. Add to result when open=close=n."}]},
+  sub6:{tuf:"https://takeuforward.org/data-structure/combination-sum-1/",nc:"https://neetcode.io/problems/combination-target-sum",steps:[{label:"optimal",tc:"O(2^t)",sc:"O(t)",desc:"Sort. Backtrack: pick current element (reusable) and recurse, or skip to next index. Prune when running sum > target."}]},
+  rh1:{tuf:"https://takeuforward.org/data-structure/palindrome-partitioning/",nc:"https://neetcode.io/problems/palindrome-partitioning",steps:[{label:"optimal",tc:"O(n·2ⁿ)",sc:"O(n²)",desc:"Backtrack: at each index try all substrings starting here. If palindrome, add to path and recurse. Precompute palindrome check with DP for speed."}]},
+  rh3:{tuf:"https://takeuforward.org/data-structure/n-queens/",nc:"https://neetcode.io/problems/n-queens",steps:[{label:"optimal",tc:"O(n!)",sc:"O(n²)",desc:"Backtrack column by column. Track used rows, diagonals (r−c), anti-diagonals (r+c). Undo placement if no solution found."}]},
+  rh7:{tuf:"https://takeuforward.org/data-structure/sudoku-solver/",nc:"https://neetcode.io/problems/sudoku-solver",steps:[{label:"optimal",tc:"O(9^empty)",sc:"O(1)",desc:"For each empty cell, try 1–9. Validate row, col, 3×3 box. Recurse. Backtrack if stuck."}]},
+  // BIT MANIPULATION
+  bit4:{tuf:"https://takeuforward.org/mathematical/check-whether-n-is-a-power-of-2-or-not/",nc:"https://neetcode.io/problems/power-of-two",steps:[{label:"optimal",tc:"O(1)",sc:"O(1)",desc:"n > 0 && (n & (n−1)) == 0. Powers of 2 have exactly one set bit; n−1 flips all lower bits so AND = 0."}]},
+  bit5:{tuf:"https://takeuforward.org/mathematical/count-number-of-set-bits/",nc:"https://neetcode.io/problems/number-of-one-bits",steps:[{label:"brute",tc:"O(32)",sc:"O(1)",desc:"Right shift and check LSB each time."},{label:"optimal",tc:"O(set bits)",sc:"O(1)",desc:"Brian Kernighan: n = n & (n−1) clears the rightmost set bit. Count iterations until n=0."}]},
+  // STACK & QUEUES
+  sq7:{tuf:"https://takeuforward.org/data-structure/valid-parentheses/",nc:"https://neetcode.io/problems/validate-parentheses",steps:[{label:"optimal",tc:"O(n)",sc:"O(n)",desc:"Stack: push on open bracket. On close: pop and verify match. Return true if stack is empty at end."}]},
+  sq8:{tuf:"https://takeuforward.org/data-structure/implement-min-stack-o2-n-and-on-space-complexity/",nc:"https://neetcode.io/problems/minimum-stack",steps:[{label:"better",tc:"O(1)",sc:"O(n)",desc:"Two stacks: main + min-tracker."},{label:"optimal",tc:"O(1)",sc:"O(n)",desc:"Store pairs (val, currentMin). Each push records the minimum at that point — no second stack needed."}]},
+  sqm1:{tuf:"https://takeuforward.org/data-structure/next-greater-element-using-stack/",nc:"https://neetcode.io/problems/next-greater-element",steps:[{label:"brute",tc:"O(n²)",sc:"O(n)",desc:"For each element scan right for next greater."},{label:"optimal",tc:"O(n)",sc:"O(n)",desc:"Monotonic decreasing stack. Traverse right-to-left. Pop while stack top ≤ current. Stack top is the NGE."}]},
+  sqm5:{tuf:"https://takeuforward.org/data-structure/trapping-rainwater/",nc:"https://neetcode.io/problems/trapping-rain-water",steps:[{label:"brute",tc:"O(n²)",sc:"O(1)",desc:"For each bar find maxLeft and maxRight; water = min(maxL,maxR) − height."},{label:"better",tc:"O(n)",sc:"O(n)",desc:"Precompute maxLeft[] and maxRight[] arrays."},{label:"optimal",tc:"O(n)",sc:"O(1)",desc:"Two pointers lo/hi. Track maxLeft, maxRight. If maxLeft < maxRight: water[lo]=maxLeft−h[lo], lo++. Else water[hi]=maxRight−h[hi], hi--."}]},
+  sqm10:{tuf:"https://takeuforward.org/data-structure/area-of-largest-rectangle-in-histogram/",nc:"https://neetcode.io/problems/largest-rectangle-in-histogram",steps:[{label:"brute",tc:"O(n²)",sc:"O(1)",desc:"For each bar, extend left/right while height ≥ current."},{label:"optimal",tc:"O(n)",sc:"O(n)",desc:"Monotonic increasing stack. When current bar is shorter than stack top: pop, compute area using popped height and distance to current left boundary."}]},
+  sqi1:{tuf:"https://takeuforward.org/data-structure/sliding-window-maximum/",nc:"https://neetcode.io/problems/sliding-window-maximum",steps:[{label:"brute",tc:"O(nk)",sc:"O(1)",desc:"Find max linearly for each window."},{label:"optimal",tc:"O(n)",sc:"O(k)",desc:"Monotonic deque (decreasing). Remove out-of-window indices from front. Remove smaller elements from back. Front is always window max."}]},
+  sqi4:{tuf:"https://takeuforward.org/data-structure/implement-lru-cache/",nc:"https://neetcode.io/problems/lru-cache",steps:[{label:"optimal",tc:"O(1) get/put",sc:"O(capacity)",desc:"Doubly linked list + HashMap. List order = access order (head=most recent). get: move to head. put: add to head, evict tail if over capacity."}]},
+  // SLIDING WINDOW
+  sw1:{tuf:"https://takeuforward.org/data-structure/length-of-longest-substring-without-any-repeating-character/",nc:"https://neetcode.io/problems/longest-substring-without-repeating-characters",steps:[{label:"brute",tc:"O(n²)",sc:"O(256)",desc:"For each start, extend until duplicate."},{label:"optimal",tc:"O(n)",sc:"O(256)",desc:"Sliding window + char→lastIndex map. On duplicate at right: move left to max(left, lastIndex+1). Track maxLen."}]},
+  swh3:{tuf:"https://takeuforward.org/data-structure/minimum-window-substring/",nc:"https://neetcode.io/problems/minimum-window-with-characters",steps:[{label:"optimal",tc:"O(n+m)",sc:"O(m)",desc:"Freq map of t. Expand right until all chars covered. Shrink left minimizing window. Track minimum window seen."}]},
+  // HEAPS
+  hpm1:{tuf:"https://takeuforward.org/data-structure/kth-largest-element-in-an-array/",nc:"https://neetcode.io/problems/kth-largest-element-in-an-array",steps:[{label:"brute",tc:"O(n log n)",sc:"O(1)",desc:"Sort descending, return k-th."},{label:"optimal",tc:"O(n log k)",sc:"O(k)",desc:"Min-heap of size k. For each element: push, then if size>k pop min. Final heap top = k-th largest."}]},
+  hph5:{tuf:"https://takeuforward.org/data-structure/find-median-from-data-stream/",nc:"https://neetcode.io/problems/find-median-in-a-data-stream",steps:[{label:"optimal",tc:"O(log n) add",sc:"O(n)",desc:"Max-heap (lower half) + min-heap (upper half). Keep sizes balanced (diff ≤ 1). Median = top of larger heap, or avg of both tops."}]},
+  hph6:{tuf:"https://takeuforward.org/data-structure/top-k-frequent-elements/",nc:"https://neetcode.io/problems/top-k-elements-in-list",steps:[{label:"better",tc:"O(n log k)",sc:"O(n)",desc:"Freq map + min-heap of size k."},{label:"optimal",tc:"O(n)",sc:"O(n)",desc:"Bucket sort: buckets[freq] = list of nums. Iterate buckets high→low, collect top k."}]},
+  // GREEDY
+  grm2:{tuf:"https://takeuforward.org/data-structure/jump-game/",nc:"https://neetcode.io/problems/jump-game",steps:[{label:"optimal",tc:"O(n)",sc:"O(1)",desc:"Track maxReach. If i > maxReach → false. Update maxReach = max(maxReach, i+nums[i])."}]},
+  grm3:{tuf:"https://takeuforward.org/data-structure/jump-game-2/",nc:"https://neetcode.io/problems/jump-game-ii",steps:[{label:"optimal",tc:"O(n)",sc:"O(1)",desc:"Track curEnd and farthest. When i=curEnd: jumps++, curEnd=farthest. Greedy: always extend to the farthest reachable position."}]},
+  grm6:{tuf:"https://takeuforward.org/data-structure/candy/",nc:"https://neetcode.io/problems/candy",steps:[{label:"optimal",tc:"O(n)",sc:"O(n)",desc:"Two passes. L→R: if rating[i]>rating[i−1] then candy[i]=candy[i−1]+1 else 1. R→L: if rating[i]>rating[i+1] then candy[i]=max(candy[i], candy[i+1]+1). Sum all."}]},
+  grm8:{tuf:"https://takeuforward.org/data-structure/insert-interval/",nc:"https://neetcode.io/problems/insert-new-interval",steps:[{label:"optimal",tc:"O(n)",sc:"O(n)",desc:"Three phases: add intervals ending before newInterval.start → merge overlapping → add remaining."}]},
+  grm9:{tuf:"https://takeuforward.org/data-structure/non-overlapping-intervals/",nc:"https://neetcode.io/problems/non-overlapping-intervals",steps:[{label:"optimal",tc:"O(n log n)",sc:"O(1)",desc:"Sort by end time. If curr.start < lastEnd: remove current (count++). Else update lastEnd. Keeping earliest-ending interval maximizes future space."}]},
+  // BINARY TREES
+  btm1:{tuf:"https://takeuforward.org/data-structure/find-the-maximum-depth-of-binary-tree/",nc:"https://neetcode.io/problems/depth-of-binary-tree",steps:[{label:"optimal",tc:"O(n)",sc:"O(h)",desc:"DFS: return 1 + max(height(left), height(right)). Base: null → 0."}]},
+  btm2:{tuf:"https://takeuforward.org/data-structure/check-whether-a-binary-tree-is-balanced-or-not/",nc:"https://neetcode.io/problems/balanced-binary-tree",steps:[{label:"brute",tc:"O(n²)",sc:"O(h)",desc:"For each node compute height and check; redundant traversals."},{label:"optimal",tc:"O(n)",sc:"O(h)",desc:"Return −1 if subtree is unbalanced, else return height. Single post-order DFS. If |leftH−rightH| > 1: propagate −1."}]},
+  btm3:{tuf:"https://takeuforward.org/data-structure/calculate-the-diameter-of-a-binary-tree/",nc:"https://neetcode.io/problems/binary-tree-diameter",steps:[{label:"brute",tc:"O(n²)",sc:"O(h)",desc:"For each node: diameter = leftH + rightH. Redundant height calls."},{label:"optimal",tc:"O(n)",sc:"O(h)",desc:"In the recursive height function, also track diameter = max(diameter, leftH+rightH) at each node."}]},
+  btm4:{tuf:"https://takeuforward.org/data-structure/maximum-sum-path-in-binary-tree/",nc:"https://neetcode.io/problems/binary-tree-maximum-path-sum",steps:[{label:"optimal",tc:"O(n)",sc:"O(h)",desc:"Post-order DFS. Single-arm path from node = node.val + max(0, leftArm, rightArm). Update global max with node.val + max(0,left) + max(0,right). Return single-arm path."}]},
+  btm6:{tuf:"https://takeuforward.org/data-structure/zig-zag-traversal-of-binary-tree/",nc:"https://neetcode.io/problems/binary-tree-zigzag-level-order-traversal",steps:[{label:"optimal",tc:"O(n)",sc:"O(n)",desc:"BFS level by level. Alternate: store level result normally or reversed based on level parity."}]},
+  btm11:{tuf:"https://takeuforward.org/data-structure/right-left-view-of-binary-tree/",nc:"https://neetcode.io/problems/binary-tree-right-side-view",steps:[{label:"optimal",tc:"O(n)",sc:"O(n)",desc:"BFS: take last node of each level for right view, first node for left view."}]},
+  bth2:{tuf:"https://takeuforward.org/data-structure/lowest-common-ancestor-for-two-given-nodes/",nc:"https://neetcode.io/problems/lowest-common-ancestor-of-binary-tree",steps:[{label:"optimal",tc:"O(n)",sc:"O(h)",desc:"If root=null/p/q: return root. Recurse both sides. If both sides return non-null: current root is LCA. Else return whichever is non-null."}]},
+  bth3:{tuf:"https://takeuforward.org/data-structure/maximum-width-of-a-binary-tree/",nc:"https://neetcode.io/problems/maximum-width-of-binary-tree",steps:[{label:"optimal",tc:"O(n)",sc:"O(n)",desc:"BFS with node index: left child = 2i, right = 2i+1. Width = last−first+1 per level. Normalize indices each level to prevent overflow."}]},
+  bth9:{tuf:"https://takeuforward.org/data-structure/construct-binary-tree-from-inorder-and-preorder-traversal/",nc:"https://neetcode.io/problems/binary-tree-from-preorder-and-inorder-traversal",steps:[{label:"optimal",tc:"O(n)",sc:"O(n)",desc:"preorder[0] = root. Find root in inorder → left/right subtree sizes. Recurse. Use hashmap for O(1) inorder lookups."}]},
+  bth11:{tuf:"https://takeuforward.org/data-structure/serialize-and-deserialize-binary-tree/",nc:"https://neetcode.io/problems/serialize-and-deserialize-binary-tree",steps:[{label:"optimal",tc:"O(n)",sc:"O(n)",desc:"Serialize: BFS, write values with 'null' for empty. Deserialize: BFS, read values and assign children in order."}]},
+  bth14:{tuf:"https://takeuforward.org/data-structure/flatten-binary-tree-to-linked-list/",nc:"https://neetcode.io/problems/flatten-binary-tree-to-linked-list",steps:[{label:"brute",tc:"O(n)",sc:"O(n)",desc:"Collect preorder into list, re-link nodes."},{label:"better",tc:"O(n)",sc:"O(h)",desc:"Reverse postorder (right→left→root) with prev pointer: root.right=prev, root.left=null."},{label:"optimal",tc:"O(n)",sc:"O(1)",desc:"For each node with left: find right-most of left subtree, attach node.right to it, move left to right, left=null. Advance to node.right."}]},
+  // BST
+  bstp5:{tuf:"https://takeuforward.org/data-structure/kth-largest-smallest-element-in-binary-search-tree/",nc:"https://neetcode.io/problems/kth-smallest-integer-in-bst",steps:[{label:"optimal",tc:"O(h+k)",sc:"O(h)",desc:"Inorder traversal of BST gives sorted ascending order. Stop at k-th element with a counter."}]},
+  bstp6:{tuf:"https://takeuforward.org/data-structure/validate-binary-search-tree/",nc:"https://neetcode.io/problems/valid-binary-search-tree",steps:[{label:"optimal",tc:"O(n)",sc:"O(h)",desc:"DFS with (min, max) range. Node must satisfy min < val < max. Left child: max=node.val. Right child: min=node.val."}]},
+  bstp12:{tuf:"https://takeuforward.org/data-structure/recover-bst-correct-bst-with-two-nodes-swapped/",nc:"https://neetcode.io/problems/recover-binary-search-tree",steps:[{label:"better",tc:"O(n)",sc:"O(n)",desc:"Inorder to array; find two swapped nodes, swap values back."},{label:"optimal",tc:"O(n)",sc:"O(1)",desc:"Morris inorder traversal. Find two violations (prev.val > curr.val). First violation: first=prev. Second: second=curr. Swap their values."}]},
+  // GRAPHS
+  gbd1:{tuf:"https://takeuforward.org/graph/number-of-provinces/",nc:"https://neetcode.io/problems/count-connected-components",steps:[{label:"dfs/bfs",tc:"O(n²)",sc:"O(n)",desc:"For each unvisited node run DFS/BFS marking all connected nodes. Count how many separate DFS/BFS calls you make."},{label:"union-find",tc:"O(n²·α)",sc:"O(n)",desc:"Union all connected pairs. Count distinct roots."}]},
+  gbd3:{tuf:"https://takeuforward.org/graph/rotten-oranges-bfs/",nc:"https://neetcode.io/problems/rotting-fruit",steps:[{label:"optimal",tc:"O(nm)",sc:"O(nm)",desc:"Multi-source BFS: enqueue all initially rotten oranges. BFS level by level (1 level = 1 minute), spreading rot to 4-neighbors. If fresh>0 at end: return −1."}]},
+  gbd7:{tuf:"https://takeuforward.org/graph/distance-of-nearest-cell-having-1/",nc:"https://neetcode.io/problems/01-matrix",steps:[{label:"brute",tc:"O((nm)²)",sc:"O(1)",desc:"BFS from each 1-cell to find nearest 0."},{label:"optimal",tc:"O(nm)",sc:"O(nm)",desc:"Multi-source BFS from ALL 0-cells. Distances fill outward — cells reached later are farther from any 0."}]},
+  gbd10:{tuf:"https://takeuforward.org/graph/word-ladder-i-bfs/",nc:"https://neetcode.io/problems/word-ladder",steps:[{label:"optimal",tc:"O(n·m·26)",sc:"O(n)",desc:"BFS: change each character of current word to a–z. If result in wordSet and unvisited, enqueue with dist+1. Return dist when endWord reached."}]},
+  gtopo3:{tuf:"https://takeuforward.org/graph/detect-a-cycle-in-directed-graph-topological-sort/",nc:"https://neetcode.io/problems/course-schedule",steps:[{label:"optimal",tc:"O(V+E)",sc:"O(V+E)",desc:"Kahn's BFS: in-degrees + queue of 0-in-degree nodes. Count processed nodes. If count < total → cycle exists."}]},
+  gtopo5:{tuf:"https://takeuforward.org/data-structure/course-schedule-ii/",nc:"https://neetcode.io/problems/course-schedule-ii",steps:[{label:"optimal",tc:"O(V+E)",sc:"O(V+E)",desc:"Topological sort (Kahn's). If result contains all nodes: return order. Else cycle → return []."}]},
+  gsp3:{tuf:"https://takeuforward.org/graph/dijkstras-algorithm-using-priority-queue/",nc:"https://neetcode.io/problems/shortest-path-with-alternating-colors",steps:[{label:"optimal",tc:"O((V+E)log V)",sc:"O(V)",desc:"Min-heap (dist, node). Start: source at 0. Greedily pick min-dist node, relax neighbors. Skip if already settled."}]},
+  goa1:{tuf:"https://takeuforward.org/graph/bridges-in-graph-using-tarjans-algorithm/",nc:"https://neetcode.io/problems/redundant-connection",steps:[{label:"optimal",tc:"O(V+E)",sc:"O(V)",desc:"Tarjan's DFS: disc[] and low[] arrays. Edge (u,v) is a bridge if low[v] > disc[u] — no back edge reaches u or above from v's subtree."}]},
+  gmst5:{tuf:"https://takeuforward.org/graph/number-of-operations-to-make-network-connected/",nc:"https://neetcode.io/problems/count-connected-components",steps:[{label:"optimal",tc:"O(E·α(V))",sc:"O(V)",desc:"Union-Find: count extra edges (both nodes already connected) and components C. Need C−1 edges. If extras < C−1: return −1."}]},
+  // DYNAMIC PROGRAMMING
+  dp2:{tuf:"https://takeuforward.org/data-structure/dynamic-programming-climbing-stairs/",nc:"https://neetcode.io/problems/climbing-stairs",steps:[{label:"brute",tc:"O(2ⁿ)",sc:"O(n)",desc:"f(n) = f(n−1) + f(n−2) — exponential overlapping subproblems."},{label:"better",tc:"O(n)",sc:"O(n)",desc:"Memoize recursive results."},{label:"optimal",tc:"O(n)",sc:"O(1)",desc:"dp[i] = dp[i−1] + dp[i−2]. Only need last two values (it's Fibonacci)."}]},
+  dp5:{tuf:"https://takeuforward.org/data-structure/house-robber-dp-6/",nc:"https://neetcode.io/problems/house-robber",steps:[{label:"optimal",tc:"O(n)",sc:"O(1)",desc:"dp[i] = max(dp[i−1], dp[i−2] + nums[i]). Can't rob adjacent. Track only prev2 and prev1 variables."}]},
+  dp6:{tuf:"https://takeuforward.org/data-structure/house-robber-2/",nc:"https://neetcode.io/problems/house-robber-ii",steps:[{label:"optimal",tc:"O(n)",sc:"O(1)",desc:"Can't rob both first and last. Run House Robber on nums[0..n−2] and nums[1..n−1]. Return max of the two results."}]},
+  dp2d1:{tuf:"https://takeuforward.org/data-structure/grid-unique-paths/",nc:"https://neetcode.io/problems/count-paths",steps:[{label:"brute",tc:"O(2^(m+n))",sc:"O(m+n)",desc:"f(m,n) = f(m−1,n) + f(m,n−1) — exponential."},{label:"better",tc:"O(mn)",sc:"O(mn)",desc:"2D DP: dp[i][j] = dp[i−1][j] + dp[i][j−1]."},{label:"optimal",tc:"O(min(m,n))",sc:"O(1)",desc:"Combinatorics: C(m+n−2, m−1)."}]},
+  dp2d3:{tuf:"https://takeuforward.org/data-structure/minimum-path-sum-in-grid/",nc:"https://neetcode.io/problems/minimum-path-sum-in-grid",steps:[{label:"optimal",tc:"O(mn)",sc:"O(mn)",desc:"dp[i][j] = grid[i][j] + min(dp[i−1][j], dp[i][j−1]). Can optimize to O(n) space with 1D DP."}]},
+  dps2:{tuf:"https://takeuforward.org/data-structure/partition-equal-subset-sum/",nc:"https://neetcode.io/problems/partition-equal-subset-sum",steps:[{label:"better",tc:"O(n·S/2)",sc:"O(n·S/2)",desc:"0/1 knapsack 2D DP: can we make sum j using first i elements?"},{label:"optimal",tc:"O(n·S/2)",sc:"O(S/2)",desc:"If total is odd: false. 1D boolean DP, iterate sums backwards to avoid item reuse."}]},
+  dps7:{tuf:"https://takeuforward.org/data-structure/minimum-coins/",nc:"https://neetcode.io/problems/coin-change",steps:[{label:"optimal",tc:"O(n·S)",sc:"O(S)",desc:"dp[0]=0, dp[i]=∞. For each coin c: dp[i] = min(dp[i], dp[i−c]+1). Unbounded knapsack (coins reusable)."}]},
+  dps9:{tuf:"https://takeuforward.org/data-structure/coin-change-2/",nc:"https://neetcode.io/problems/coin-change-ii",steps:[{label:"optimal",tc:"O(n·S)",sc:"O(S)",desc:"dp[0]=1. Outer loop: coins. Inner loop: amount coin..target. dp[j] += dp[j−coin]. Order matters: outer=coin prevents double-counting."}]},
+  dpstr1:{tuf:"https://takeuforward.org/data-structure/longest-common-subsequence-dp-25/",nc:"https://neetcode.io/problems/longest-common-subsequence",steps:[{label:"optimal",tc:"O(nm)",sc:"O(nm)",desc:"dp[i][j] = LCS of s1[0..i] and s2[0..j]. If s1[i]=s2[j]: 1+dp[i−1][j−1]. Else: max(dp[i−1][j], dp[i][j−1])."}]},
+  dpstr9:{tuf:"https://takeuforward.org/data-structure/edit-distance-dp-33/",nc:"https://neetcode.io/problems/edit-distance",steps:[{label:"optimal",tc:"O(nm)",sc:"O(nm)",desc:"dp[i][j] = min edits to convert word1[0..i]→word2[0..j]. Match: dp[i−1][j−1]. Else: 1+min(delete dp[i−1][j], insert dp[i][j−1], replace dp[i−1][j−1])."}]},
+  dpstk2:{tuf:"https://takeuforward.org/data-structure/buy-and-sell-stock-ii/",nc:"https://neetcode.io/problems/buy-and-sell-crypto-ii",steps:[{label:"optimal",tc:"O(n)",sc:"O(1)",desc:"Greedy: sum all positive consecutive differences (buy at every local min, sell at every local max)."}]},
+  dpstk3:{tuf:"https://takeuforward.org/data-structure/buy-and-sell-stock-iii/",nc:"https://neetcode.io/problems/buy-and-sell-crypto-iii",steps:[{label:"optimal",tc:"O(n)",sc:"O(1)",desc:"State machine: buy1=max(buy1,−price), sell1=max(sell1,buy1+price), buy2=max(buy2,sell1−price), sell2=max(sell2,buy2+price). Answer = sell2."}]},
+  dplis1:{tuf:"https://takeuforward.org/data-structure/longest-increasing-subsequence-dp-41/",nc:"https://neetcode.io/problems/longest-increasing-subsequence",steps:[{label:"better",tc:"O(n²)",sc:"O(n)",desc:"dp[i] = LIS ending at i. For j<i: if nums[j]<nums[i]: dp[i]=max(dp[i],dp[j]+1)."},{label:"optimal",tc:"O(n log n)",sc:"O(n)",desc:"Patience sorting: maintain tails[]. For each num, binary search first tail ≥ num and replace it. If num > all tails: append. len(tails) = LIS."}]},
+  dpmcm4:{tuf:"https://takeuforward.org/data-structure/burst-balloons/",nc:"https://neetcode.io/problems/burst-balloons",steps:[{label:"optimal",tc:"O(n³)",sc:"O(n²)",desc:"Interval DP: think of k as the LAST balloon to burst in range [i,j]. Coins = nums[i−1]*nums[k]*nums[j+1] + dp[i..k−1] + dp[k+1..j]. Try all k."}]},
+  dpsq1:{tuf:"https://takeuforward.org/data-structure/maximum-size-rectangle-in-matrix/",nc:"https://neetcode.io/problems/maximal-square",steps:[{label:"optimal",tc:"O(nm)",sc:"O(nm)",desc:"dp[i][j] = side of largest square with bottom-right at (i,j). If cell=1: dp[i][j] = min(dp[i−1][j], dp[i][j−1], dp[i−1][j−1]) + 1. Answer = max²(dp)."}]},
+  // TRIES
+  t1:{tuf:"https://takeuforward.org/data-structure/implement-trie-1/",nc:"https://neetcode.io/problems/implement-prefix-tree",steps:[{label:"optimal",tc:"O(L) per op",sc:"O(26·L·N)",desc:"TrieNode: children[26] + isEnd. Insert: traverse/create nodes per char. Search: traverse, check isEnd. StartsWith: traverse, return true if path exists."}]},
+  t6:{tuf:"https://takeuforward.org/data-structure/maximum-xor-of-two-numbers-in-an-array/",nc:"https://neetcode.io/problems/maximum-xor-of-two-numbers-in-an-array",steps:[{label:"brute",tc:"O(n²)",sc:"O(1)",desc:"Try every pair."},{label:"optimal",tc:"O(32n)",sc:"O(32n)",desc:"Binary trie (MSB first). For each number, greedily pick opposite bit at each level to maximize XOR."}]},
+};
+
 // ─── State ───────────────────────────────────────────────────────────────────
-let state = { activeTopicId: DATA[0].id, checked: {}, notes: {}, activeNoteId: null, search: '' };
+let state = { activeTopicId: DATA[0].id, checked: {}, notes: {}, activeNoteId: null, activeTab: 'notes', search: '' };
 let currentUser = null;
 let unsubFirestore = null;
 let saveTimeout = null;
@@ -931,6 +1110,9 @@ function renderMain() {
     filtered.forEach(p => {
       const checked = !!state.checked[p.id];
       const hasNote = !!(state.notes[p.id] && state.notes[p.id].trim());
+      const sol = SOLUTIONS[p.id];
+      const extLink = p.lc || sol?.tuf || sol?.nc || '';
+      const extTitle = p.lc ? 'LeetCode' : sol?.tuf ? 'TakeUForward' : 'NeetCode';
       const lcIcon = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>`;
       const noteIcon = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>`;
       html += `<div class="problem-row ${checked?'done':''}" id="row-${p.id}">
@@ -938,10 +1120,10 @@ function renderMain() {
         <span class="problem-name">${escHtml(p.name)}</span>
         <span class="diff-badge diff-${p.diff}">${p.diff}</span>
         <div class="problem-actions">
-          ${p.lc
-            ? `<a class="icon-btn" href="${p.lc}" target="_blank" onclick="event.stopPropagation()" title="Open on LeetCode">${lcIcon}</a>`
-            : `<span class="icon-btn" style="opacity:.2">${lcIcon}</span>`}
-          <div class="icon-btn ${hasNote?'has-note':''}" onclick="openNote(event,'${p.id}',${JSON.stringify(p.name)},${JSON.stringify(p.lc||'')})" title="Notes">${noteIcon}</div>
+          ${extLink
+            ? `<a class="icon-btn" href="${extLink}" target="_blank" onclick="event.stopPropagation()" title="${extTitle}">${lcIcon}</a>`
+            : `<span class="icon-btn" style="opacity:.15">${lcIcon}</span>`}
+          <div class="icon-btn ${hasNote?'has-note':''}" onclick="openNote(event,'${p.id}',${JSON.stringify(p.name)},${JSON.stringify(p.lc||'')},${JSON.stringify(sol?.tuf||'')},${JSON.stringify(sol?.nc||'')})" title="Notes / Solution">${noteIcon}</div>
         </div>
       </div>`;
     });
@@ -963,24 +1145,89 @@ window.toggleCheck = (e, id) => {
   updateOverallProgress();
   renderSidebar();
   renderMain();
+  // If solution panel is open on this problem, refresh it
+  if (state.activeNoteId === id && state.activeTab === 'solution') renderSolution();
 };
 
-window.openNote = (e, id, name, lc) => {
+window.openNote = (e, id, name, lc, tuf, nc) => {
   e.stopPropagation();
   state.activeNoteId = id;
+  state._panelMeta = { id, name, lc, tuf, nc };
   document.getElementById('notes-title').textContent = name;
   document.getElementById('notes-textarea').value = state.notes[id] || '';
-  document.getElementById('notes-links').innerHTML = lc
-    ? `<a class="link-chip" href="${lc}" target="_blank"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>LeetCode</a>`
-    : `<span style="font-size:11px;color:var(--text3)">No LeetCode link</span>`;
+
+  const extIcon = `<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>`;
+  let links = '';
+  if (lc)  links += `<a class="link-chip" href="${lc}"  target="_blank">${extIcon} LeetCode</a>`;
+  if (tuf) links += `<a class="link-chip" href="${tuf}" target="_blank">${extIcon} TUF</a>`;
+  if (nc)  links += `<a class="link-chip" href="${nc}"  target="_blank">${extIcon} NeetCode</a>`;
+  if (!links) links = `<span style="font-size:11px;color:var(--text3)">No external link</span>`;
+  document.getElementById('notes-links').innerHTML = links;
+
   document.getElementById('notes-panel').classList.add('open');
-  document.getElementById('notes-textarea').focus();
+  switchTab(state.activeTab || 'notes');
+  if (state.activeTab !== 'solution') document.getElementById('notes-textarea').focus();
 };
 
 window.closeNotes = () => {
   document.getElementById('notes-panel').classList.remove('open');
   state.activeNoteId = null;
 };
+
+window.switchTab = (tab) => {
+  state.activeTab = tab;
+  document.getElementById('tab-notes').classList.toggle('active', tab === 'notes');
+  document.getElementById('tab-solution').classList.toggle('active', tab === 'solution');
+  document.getElementById('pane-notes').classList.toggle('active', tab === 'notes');
+  document.getElementById('pane-solution').classList.toggle('active', tab === 'solution');
+  if (tab === 'solution') renderSolution();
+};
+
+function renderSolution() {
+  const meta = state._panelMeta;
+  if (!meta) return;
+  const { id, lc, tuf, nc } = meta;
+  const done = !!state.checked[id];
+  const sol = SOLUTIONS[id];
+  const extIcon = `<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>`;
+
+  if (!done) {
+    document.getElementById('sol-body').innerHTML = `
+      <div class="sol-locked">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="3" y="11" width="18" height="11" rx="2"/>
+          <path d="M7 11V7a5 5 0 0110 0v4"/>
+        </svg>
+        <p>Mark this problem as done<br>to unlock the solution.</p>
+      </div>`;
+    return;
+  }
+
+  let linksHtml = '';
+  if (lc)  linksHtml += `<a class="link-chip" href="${lc}"  target="_blank">${extIcon} LeetCode</a>`;
+  if (tuf) linksHtml += `<a class="link-chip" href="${tuf}" target="_blank">${extIcon} TakeUForward</a>`;
+  if (nc)  linksHtml += `<a class="link-chip" href="${nc}"  target="_blank">${extIcon} NeetCode</a>`;
+
+  let cardsHtml = '';
+  if (sol?.steps?.length) {
+    cardsHtml = sol.steps.map(s => {
+      const cls = s.label === 'optimal' ? 'optimal' : s.label === 'better' ? 'better' : s.label === 'brute' ? 'brute' : 'optimal';
+      return `<div class="sol-card">
+        <div class="sol-card-head">
+          <span class="sol-label ${cls}">${s.label}</span>
+          <span class="sol-complexity">TC: ${s.tc} &nbsp;|&nbsp; SC: ${s.sc}</span>
+        </div>
+        <div class="sol-desc">${escHtml(s.desc)}</div>
+      </div>`;
+    }).join('');
+  } else {
+    cardsHtml = `<p class="sol-no-data">No inline solution data for this problem.<br>See TakeUForward / NeetCode links above.</p>`;
+  }
+
+  document.getElementById('sol-body').innerHTML = `
+    ${linksHtml ? `<div class="sol-links">${linksHtml}</div>` : ''}
+    <div class="sol-cards">${cardsHtml}</div>`;
+}
 
 document.getElementById('notes-textarea').addEventListener('input', function() {
   const id = state.activeNoteId;
