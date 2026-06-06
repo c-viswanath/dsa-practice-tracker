@@ -990,6 +990,10 @@ const SOLUTIONS = {
   t6:{tuf:"https://takeuforward.org/data-structure/maximum-xor-of-two-numbers-in-an-array/",nc:"https://neetcode.io/problems/maximum-xor-of-two-numbers-in-an-array",steps:[{label:"brute",tc:"O(n²)",sc:"O(1)",desc:"Try every pair."},{label:"optimal",tc:"O(32n)",sc:"O(32n)",desc:"Binary trie (MSB first). For each number, greedily pick opposite bit at each level to maximize XOR."}]},
 };
 
+// ─── Problem lookup map (avoids JSON.stringify-in-HTML-attribute bug) ────────
+const PMAP = {};
+DATA.forEach(t => t.subtopics.forEach(s => s.problems.forEach(p => { PMAP[p.id] = p; })));
+
 // ─── State ───────────────────────────────────────────────────────────────────
 let state = { activeTopicId: DATA[0].id, checked: {}, notes: {}, activeNoteId: null, activeTab: 'notes', search: '' };
 let currentUser = null;
@@ -1120,9 +1124,7 @@ function renderMain() {
       const checked = !!state.checked[p.id];
       const hasNote = !!(state.notes[p.id] && state.notes[p.id].trim());
       const sol = SOLUTIONS[p.id];
-      const tufLink = sol?.tuf || ('https://takeuforward.org/?s=' + encodeURIComponent(p.name));
-      const ncLink  = sol?.nc || '';
-      const extLink = p.lc || tufLink;
+      const extLink = p.lc || (sol?.tuf) || ('https://takeuforward.org/?s=' + encodeURIComponent(p.name));
       const extTitle = p.lc ? 'LeetCode' : 'TakeUForward';
       const lcIcon = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>`;
       const noteIcon = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>`;
@@ -1132,7 +1134,7 @@ function renderMain() {
         <span class="diff-badge diff-${p.diff}">${p.diff}</span>
         <div class="problem-actions">
           <a class="icon-btn" href="${extLink}" target="_blank" onclick="event.stopPropagation()" title="${extTitle}">${lcIcon}</a>
-          <div class="icon-btn ${hasNote?'has-note':''}" onclick="openNote(event,'${p.id}',${JSON.stringify(p.name)},${JSON.stringify(p.lc||'')},${JSON.stringify(tufLink)},${JSON.stringify(ncLink)})" title="Notes / Solution">${noteIcon}</div>
+          <div class="icon-btn ${hasNote?'has-note':''}" onclick="openNote(event,'${p.id}')" title="Notes / Solution">${noteIcon}</div>
         </div>
       </div>`;
     });
@@ -1158,11 +1160,18 @@ window.toggleCheck = (e, id) => {
   if (state.activeNoteId === id && state.activeTab === 'solution') renderSolution();
 };
 
-window.openNote = (e, id, name, lc, tuf, nc) => {
+window.openNote = (e, id) => {
   e.stopPropagation();
+  const p   = PMAP[id];
+  const sol = SOLUTIONS[id];
+  const lc  = p.lc || '';
+  const tuf = sol?.tuf || ('https://takeuforward.org/?s=' + encodeURIComponent(p.name));
+  const nc  = sol?.nc || '';
+
   state.activeNoteId = id;
-  state._panelMeta = { id, name, lc, tuf, nc };
-  document.getElementById('notes-title').textContent = name;
+  state._panelMeta = { id, name: p.name, lc, tuf, nc };
+
+  document.getElementById('notes-title').textContent = p.name;
   document.getElementById('notes-textarea').value = state.notes[id] || '';
 
   const extIcon = `<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>`;
@@ -1170,11 +1179,10 @@ window.openNote = (e, id, name, lc, tuf, nc) => {
   if (lc)  links += `<a class="link-chip" href="${lc}"  target="_blank">${extIcon} LeetCode</a>`;
   if (tuf) links += `<a class="link-chip" href="${tuf}" target="_blank">${extIcon} TUF</a>`;
   if (nc)  links += `<a class="link-chip" href="${nc}"  target="_blank">${extIcon} NeetCode</a>`;
-  if (!links) links = `<span style="font-size:11px;color:var(--text3)">No external link</span>`;
   document.getElementById('notes-links').innerHTML = links;
 
   document.getElementById('notes-panel').classList.add('open');
-  switchTab(state.activeTab || 'notes');
+  window.switchTab(state.activeTab || 'notes');
   if (state.activeTab !== 'solution') document.getElementById('notes-textarea').focus();
 };
 
