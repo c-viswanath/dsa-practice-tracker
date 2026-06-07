@@ -1,0 +1,4698 @@
+{
+  "b1": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Iterate through all possible pairs of elements and check if their sum equals the target. This approach is naive and inefficient for large inputs."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n log n)",
+        "sc": "O(1)",
+        "desc": "Sort the input array first, then use two pointers to find the pair that sums up to the target value efficiently."
+      }
+    ]
+  },
+  "b2": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Check each pair of elements for data type compatibility. Brute force by iterating through pairs."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Track the most common data type encountered during a single pass through the array."
+      }
+    ]
+  },
+  "b3": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(1)",
+        "sc": "O(1)",
+        "desc": "The brute force approach directly applies if/else statements to handle all possible conditions, no optimization needed."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(1)",
+        "sc": "O(1)",
+        "desc": "Optimal solution involves using if/else statements effectively to handle different cases with minimal checks."
+      }
+    ]
+  },
+  "b4": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Evaluate all cases sequentially until a match is found."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(1)",
+        "sc": "O(1)",
+        "desc": "Use a dictionary to map keys directly to values for constant-time lookup."
+      }
+    ]
+  },
+  "b5": {
+    "steps": [
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Arrays are collections of elements stored contiguously in memory. Strings are arrays of characters with a null terminator."
+      }
+    ]
+  },
+  "b6": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Iterate through the array with two nested loops to compare each element with every other element."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Use a single loop to find the maximum value by keeping track of the highest element encountered so far."
+      }
+    ]
+  },
+  "b7": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Iterate through each element and compare it with every other element to find duplicates."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n log n)",
+        "sc": "O(1)",
+        "desc": "Sort the array first, then iterate through it once to check for consecutive duplicates."
+      }
+    ]
+  },
+  "b8": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Check each function call to determine if it passes by value or reference."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(1)",
+        "sc": "O(1)",
+        "desc": "Core concept: Understand that in most languages, functions pass parameters either by value (for primitive types) or by reference (for objects). This insight helps in analyzing function behavior and optimizing code accordingly."
+      }
+    ]
+  },
+  "b9": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Iterate through each element and compare it with every other element to find the maximum or minimum."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Traverse the array once, keeping track of the current maximum or minimum value encountered."
+      }
+    ]
+  },
+  "m1": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Iterate through each digit of the number and count them one by one."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(log n)",
+        "sc": "O(1)",
+        "desc": "Count digits by repeatedly dividing the number by 10 until it becomes zero. Each division reduces the problem size by a factor of 10."
+      }
+    ]
+  },
+  "m2": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Convert number to string, reverse the string, convert back to number."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Extract digits using modulo and division, construct reversed number iteratively."
+      }
+    ]
+  },
+  "m3": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Convert the number to a string and compare it with its reverse."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(log n)",
+        "sc": "O(1)",
+        "desc": "Reverse only half of the number and compare it with the first half."
+      }
+    ]
+  },
+  "m4": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Iterate through all numbers up to the smaller of the two given numbers to find their common divisors and compute the greatest one."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(log(min(a, b)))",
+        "sc": "O(1)",
+        "desc": "Use Euclid's algorithm, which repeatedly replaces the larger number by its remainder when divided by the smaller number until one of the numbers becomes zero. The other number at that point is the GCD."
+      }
+    ]
+  },
+  "m5": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(d^d)",
+        "sc": "O(1)",
+        "desc": "Check all numbers up to d^d where d is the number of digits. For each number, calculate the sum of its digits raised to the power of d and check if it equals the number."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(d)",
+        "sc": "O(1)",
+        "desc": "Determine the number of digits in the number, then repeatedly extract and process each digit without needing to calculate powers for all numbers up to a large limit."
+      }
+    ]
+  },
+  "m6": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Iterate from 1 to n and check if each number divides n without a remainder."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(\u221an)",
+        "sc": "O(1)",
+        "desc": "Iterate from 1 to \u221an, checking divisors on both sides of the square root for efficiency."
+      }
+    ]
+  },
+  "m7": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Check every number from 2 to n-1 if it divides n. If any do, n is not prime."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(sqrt(n))",
+        "sc": "O(1)",
+        "desc": "Only check divisors up to the square root of n. If any divisor is found in this range, n is not prime."
+      }
+    ]
+  },
+  "r1": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n)",
+        "sc": "O(n)",
+        "desc": "Recursively calls itself N times, doubling the call stack with each recursion."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Utilizes a loop internally to avoid multiple recursive calls, maintaining constant space complexity."
+      }
+    ]
+  },
+  "r2": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(N)",
+        "sc": "O(N)",
+        "desc": "Recursively call a function to print numbers from 1 to N. Each recursive call adds a layer to the stack."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(N)",
+        "sc": "O(1)",
+        "desc": "Use an auxiliary variable to keep track of the current number, incrementing it in each recursive call until it reaches N."
+      }
+    ]
+  },
+  "r3": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n)",
+        "sc": "O(n)",
+        "desc": "Iterate from N to 1 using a loop. This approach uses an iterative method with linear time complexity and space complexity due to the stack used for function calls."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Use recursion to print N to 1. The recursive approach directly mirrors the problem statement, with a constant space complexity due to tail recursion optimization or iterative implementation if necessary."
+      }
+    ]
+  },
+  "r4": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n)",
+        "sc": "O(n)",
+        "desc": "Iteratively calculate sum using a loop. Each recursive call adds to the stack."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(1)",
+        "sc": "O(1)",
+        "desc": "Use the formula for the sum of first N natural numbers: (N * (N + 1)) / 2."
+      }
+    ]
+  },
+  "r5": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(N)",
+        "sc": "O(N)",
+        "desc": "Calculate factorial iteratively or recursively without memoization."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(N)",
+        "sc": "O(N)",
+        "desc": "Use recursion with memoization to avoid redundant calculations."
+      }
+    ]
+  },
+  "r6": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n)",
+        "sc": "O(n)",
+        "desc": "Reverse the array using an auxiliary stack to hold elements temporarily."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Swap elements from both ends towards the center until they meet in the middle."
+      }
+    ]
+  },
+  "r7": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(n)",
+        "desc": "Reverse the string and compare with the original. Convert to list for reversal."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Use two pointers, one from start and one from end, move towards center comparing characters."
+      }
+    ]
+  },
+  "r8": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(2^n)",
+        "sc": "O(n)",
+        "desc": "Recursively calculates Fibonacci numbers without memoization."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(n)",
+        "desc": "Uses dynamic programming to store previously computed values for efficiency."
+      }
+    ]
+  },
+  "h1": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Simply compare each element with every other element."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(n)",
+        "desc": "Use a hash table to store and quickly check for the existence of elements."
+      }
+    ]
+  },
+  "h2": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Iterate through each element and count its occurrences by comparing with every other element."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(n)",
+        "desc": "Use a hash map to store the frequency of each element as you iterate through the array, resulting in linear time complexity."
+      }
+    ]
+  },
+  "h3": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Iterate through each element and count its frequency using another loop. Track the highest and lowest frequencies."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(n)",
+        "desc": "Use a hash map to store the frequency of each element in one pass. Iterate through the hash map to find the highest and lowest frequencies."
+      }
+    ]
+  },
+  "s1": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Iterate through each element and find the smallest element in the remaining unsorted part, then swap it with the current element."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Same as brute force but optimized by reducing unnecessary swaps. Track the index of the minimum value and perform a single swap at the end of each pass."
+      }
+    ]
+  },
+  "s2": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Compare adjacent elements and swap them if they are in the wrong order. Repeat this process n times."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n) (best case when array is already sorted)",
+        "sc": "O(1)",
+        "desc": "After each pass, the largest unsorted element moves to its correct position. Stop if no swaps are needed in a pass."
+      }
+    ]
+  },
+  "s3": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Iterate through each element and compare it with its preceding elements to find the correct position, then insert it."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Same as brute force but optimized by breaking early if no more swaps are needed."
+      }
+    ]
+  },
+  "s6": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Compare each pair of adjacent items and swap them if they are in the wrong order. Repeat this process for each item, moving unsorted elements towards the end."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Optimize by adding a flag to detect if any swaps occurred during a pass. If no swaps, the array is already sorted and can terminate early."
+      }
+    ]
+  },
+  "s7": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Insert each element into its correct position by comparing it with all previously sorted elements. Repeat until the entire list is sorted."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Optimization: For each element, only compare and swap if needed, reducing unnecessary swaps and comparisons."
+      }
+    ]
+  },
+  "a1": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Iterate through the array and keep track of the maximum element found."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Initialize the maximum element with the first element, then iterate through the array comparing each element with the current maximum and updating it if necessary."
+      }
+    ]
+  },
+  "a2": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Iterate through each element and compare it with all other elements to find if it's larger or smaller."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Maintain two variables, one for the largest and one for the second largest. Update these variables as you iterate through the array."
+      }
+    ]
+  },
+  "a3": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Compare each element with all subsequent elements to check if they are sorted."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Iterate through the array and compare each element with its next one; if any pair is out of order, return false. Otherwise, return true."
+      }
+    ]
+  },
+  "a5": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Iterate through the array and shift each element to its left by one position manually."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Use a temporary variable to store the first element, then shift all other elements to the left, and finally place the stored element at the end of the array."
+      }
+    ]
+  },
+  "a6": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n*d)",
+        "sc": "O(1)",
+        "desc": "Rotate the array by one position d times."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Reverse the entire array, then reverse first d elements and last n-d elements separately."
+      }
+    ]
+  },
+  "a8": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Iterate through each element of the array until the target is found or the end is reached."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Check each element in the array sequentially until the target is found."
+      }
+    ]
+  },
+  "a9": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(m + n)",
+        "sc": "O(m + n)",
+        "desc": "Merge the two arrays into a new array and sort it."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(m + n)",
+        "sc": "O(1)",
+        "desc": "Use two pointers to traverse both arrays, comparing elements and appending the smaller one to the result. Move the pointer of the array with the smaller element."
+      }
+    ]
+  },
+  "a13": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Generate all possible subarrays and check if their sum equals K. Keep track of the longest valid subarray."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Use a sliding window approach to maintain a window that sums up to K. Adjust the window's start and end based on the sum value."
+      }
+    ]
+  },
+  "am6": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Iterate through the array and swap any misplaced positive or negative number with the next one. Repeat until no more swaps are needed."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Rearrange the array in-place using a pointer to track misplaced elements and another to iterate through the array, ensuring positive and negative numbers alternate by swapping when necessary."
+      }
+    ]
+  },
+  "am8": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Check each element if it is greater than all elements after it. This involves nested loops."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Traverse the array from right to left, keeping track of the maximum element seen so far. Compare current element with this max and update if necessary."
+      }
+    ]
+  },
+  "am13": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Iterate through all possible subarrays and check if their sum equals K."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(n)",
+        "desc": "Use a hashmap to store the cumulative sum up to each index, allowing constant-time lookups for required sums."
+      }
+    ]
+  },
+  "ah4": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^4)",
+        "sc": "O(1)",
+        "desc": "Generate all possible quadruplets and check if their sum equals the target."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n^3)",
+        "sc": "O(1)",
+        "desc": "Sort the array, then use two nested loops to fix two elements and use a two-pointer technique to find the other two elements that make up the sum."
+      }
+    ]
+  },
+  "ah5": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Check all possible subarrays and calculate their sums to find the largest subarray with a sum of zero."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(n)",
+        "desc": "Use a hash map to store the cumulative sum up to each index. If the same cumulative sum is encountered again, it means the subarray between these indices sums to zero."
+      }
+    ]
+  },
+  "ah6": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Generate all possible subarrays and count those whose XOR equals K."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(n)",
+        "desc": "Use a hash map to store the prefix XOR and its frequency. Iterate through the array, calculate the current XOR, and check if there exists a previous prefix XOR such that their difference equals K."
+      }
+    ]
+  },
+  "ah8": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n + m)",
+        "sc": "O(n + m)",
+        "desc": "Merge by copying both arrays into a new array and then sorting it."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n + m)",
+        "sc": "O(1)",
+        "desc": "Reverse merge from the end of the arrays, effectively shifting elements in place to avoid extra space."
+      }
+    ]
+  },
+  "bs2": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Check each element sequentially to find the lower bound."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(log n)",
+        "sc": "O(1)",
+        "desc": "Utilize binary search to efficiently locate the smallest index where the element is greater than or equal to a target value."
+      }
+    ]
+  },
+  "bs3": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Iterate through each element until finding the target or reaching the end."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(log n)",
+        "sc": "O(1)",
+        "desc": "Utilize binary search to efficiently find the upper bound by narrowing down the search range based on comparisons."
+      }
+    ]
+  },
+  "bs5": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Iterate through the array to find the floor and ceil values. Compare each element with the target."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(log n)",
+        "sc": "O(1)",
+        "desc": "Use binary search to efficiently locate the floor and ceil values in a sorted array by comparing middle elements with the target."
+      }
+    ]
+  },
+  "bs6": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Check each element sequentially to find the first and last occurrence."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(log n)",
+        "sc": "O(1)",
+        "desc": "Use binary search to efficiently narrow down the range, reducing the search space by half in each step."
+      }
+    ]
+  },
+  "bs7": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Count occurrences by iterating through the array and incrementing a counter when the target value is found."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(log n)",
+        "sc": "O(1)",
+        "desc": "Use binary search to find the leftmost and rightmost indices of the target in the sorted array, then calculate the number of occurrences by subtracting these indices."
+      }
+    ]
+  },
+  "bs9": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Check each element in the array to see if it matches the target. This approach is straightforward but inefficient for large arrays."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(log n)",
+        "sc": "O(1)",
+        "desc": "Binary search with modifications to handle duplicates, where you ignore one half of the array when both ends are equal to the middle element."
+      }
+    ]
+  },
+  "bs11": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Check each element with its previous one to find a break where the next is smaller than the current."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(log n)",
+        "sc": "O(1)",
+        "desc": "Binary search: Compare middle element with last. If mid < last, rotation point is in left half; otherwise, in right half."
+      }
+    ]
+  },
+  "bsa2": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^k)",
+        "sc": "O(1)",
+        "desc": "Iteratively incrementally approach the root by checking each number. Continue until the nth power is close to the target."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(log n)",
+        "sc": "O(1)",
+        "desc": "Use binary search between 0 and the target number. Adjust the mid-point based on whether its nth power is greater or less than the target, narrowing down to the root."
+      }
+    ]
+  },
+  "bsa4": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n * d)",
+        "sc": "O(1)",
+        "desc": "Check each day from 1 to d to see if we can make M bouquets. For each day, count how many bouquets can be made."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n log d)",
+        "sc": "O(1)",
+        "desc": "Binary search between the minimum and maximum possible days to make M bouquets. For each mid-day, count if we can make M bouquets."
+      }
+    ]
+  },
+  "bsa5": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n * m)",
+        "sc": "O(1)",
+        "desc": "Check each number from 1 to n if it divides all numbers up to m. The first such number is the answer."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(log(m) * log(n))",
+        "sc": "O(1)",
+        "desc": "Use binary search on the range [1, m] to find the smallest divisor of n. Check if a mid-point divides n; adjust the search range accordingly."
+      }
+    ]
+  },
+  "bsa7": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Check each number starting from 1 and count missing positives until the k-th one is found."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(log n)",
+        "sc": "O(1)",
+        "desc": "Binary search through the sorted array to find the range where the k-th missing positive number lies. Adjust the search based on the count of missing numbers in that range."
+      }
+    ]
+  },
+  "bsa8": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Try placing each cow at every possible position and check if it's possible to place all cows with the given minimum distance."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n log n + n log m)",
+        "sc": "O(1)",
+        "desc": "Sort the positions, then use binary search on the possible distances between cows. Check feasibility for each mid-point in binary search."
+      }
+    ]
+  },
+  "bsa9": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Check all possible allocations of books to students and find the minimum number of pages among those that satisfy the condition."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n log k)",
+        "sc": "O(1)",
+        "desc": "Binary search on the number of pages a student can read. Determine if it's possible to allocate books in such a way that no student has more than 'mid' pages, where 'mid' is the middle value between the maximum pages and the sum of all pages."
+      }
+    ]
+  },
+  "bsa10": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Divide the array into all possible pairs and calculate their sums. Compare each sum to find the pair with the largest sum."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(log n * m)",
+        "sc": "O(1)",
+        "desc": "Binary search for the maximum possible sum by guessing a potential sum and checking if it can be achieved by splitting the array into non-empty subarrays. Adjust the search range based on whether the guessed sum is achievable."
+      }
+    ]
+  },
+  "bsa11": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Divide the wall into n segments and try all combinations to find the minimum height."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n log n)",
+        "sc": "O(1)",
+        "desc": "Binary search for the minimum height. Set lower bound as the maximum wall height, upper as the sum of all wall heights divided by n segments."
+      }
+    ]
+  },
+  "bsa12": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Check all possible placements of gas stations and calculate the maximum distance to any station for each placement."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n log n + n log m)",
+        "sc": "O(1)",
+        "desc": "Sort gas stations, then use binary search on the possible distances between stations to find the minimum max distance."
+      }
+    ]
+  },
+  "bsa14": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(m+n)",
+        "sc": "O(m+n)",
+        "desc": "Merge both arrays into a single sorted array and return the k-th element."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(log(min(m,n)))",
+        "sc": "O(1)",
+        "desc": "Use binary search to find the k-th smallest element by partitioning both arrays optimally."
+      }
+    ]
+  },
+  "bs2d1": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(m * n)",
+        "sc": "O(1)",
+        "desc": "Iterate through each row and count the number of 1s. Track the row with the maximum count."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(m + n)",
+        "sc": "O(1)",
+        "desc": "Start from the top-right corner and move left or down based on the value, efficiently finding the row with the most 1s."
+      }
+    ]
+  },
+  "bs2d4": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(m * n)",
+        "sc": "O(1)",
+        "desc": "Iterate through each element and compare it with its neighbors to find a peak. If an element is greater than all of its neighbors, it's a peak."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(m log n)",
+        "sc": "O(1)",
+        "desc": "Treat the 2D matrix as a 1D array and perform binary search. For each middle element, check its neighbors to decide which half of the matrix to explore next."
+      }
+    ]
+  },
+  "bs2d5": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(m * n log(m * n))",
+        "sc": "O(1)",
+        "desc": "Sort all elements of the matrix in a single array and find the median."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n * log(max-min))",
+        "sc": "O(1)",
+        "desc": "Use binary search to find the median by counting elements less than or equal to a mid value within each row."
+      }
+    ]
+  },
+  "str1": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(n^2)",
+        "desc": "Iterate through each character and check if it's part of an outermost parenthesis by counting nested parentheses. Remove if outermost."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Track the depth of nested parentheses using a counter. Ignore characters when counter is at 0 or 1, otherwise add to result."
+      }
+    ]
+  },
+  "str2": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(n)",
+        "desc": "Split the string into words using a simple loop, then reverse each word individually. Concatenate them back with spaces."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Reverse the entire string first, then reverse each word to get the correct order of words and characters within each word."
+      }
+    ]
+  },
+  "str3": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Convert each character to an integer and check if it's odd. If so, compare it with the current largest odd number found."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Scan the string from right to left. Stop at the first odd digit and return it as the largest odd number in the string."
+      }
+    ]
+  },
+  "str4": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(m * n)",
+        "sc": "O(1)",
+        "desc": "Iterate through all characters of each string until a mismatch is found."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n + m)",
+        "sc": "O(1)",
+        "desc": "Compare the shortest string with others to find the common prefix efficiently."
+      }
+    ]
+  },
+  "str5": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Iterate through each character of both strings and compare their occurrences."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Use two hash maps to map characters from one string to another and vice versa, ensuring one-to-one correspondence."
+      }
+    ]
+  },
+  "str6": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Rotate each string of length n by all possible rotations (n) and check if any rotation matches the other string."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(n)",
+        "desc": "Concatenate the first string with itself, then check if the second string is a substring of this concatenated string."
+      }
+    ]
+  },
+  "str8": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n log n)",
+        "sc": "O(n)",
+        "desc": "Count character frequencies and sort characters by frequency. Brute force due to sorting."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n log k)",
+        "sc": "O(n + k)",
+        "desc": "Use a max-heap (priority queue) to place characters based on frequency, then build the result string from heap elements."
+      }
+    ]
+  },
+  "str9": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Check each substring to determine if it is valid and keep track of the maximum nesting depth."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Iterate through the string, maintaining a counter for the current depth. Increment when encountering an opening parenthesis '(' and decrement when encountering a closing parenthesis ')'. Track the maximum depth encountered."
+      }
+    ]
+  },
+  "str10": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Convert each Roman numeral to its integer equivalent and sum them up. Iterate through the string to find matching substrings like 'IV' or 'IX'."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Iterate through the Roman numeral string from left to right, comparing each character with the next one. If the current value is less than the next, subtract it; otherwise, add it."
+      }
+    ]
+  },
+  "str11": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(n)",
+        "desc": "Convert integer to string and then use a lookup table for each digit."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Use a fixed array of Roman numeral symbols and their values, iterating through the integer from largest to smallest value."
+      }
+    ]
+  },
+  "str12": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Iterate through each character of the string, converting it to an integer while handling signs and overflow."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Optimize by using a loop to process digits one by one, checking for signs, and updating the result carefully to handle overflow conditions."
+      }
+    ]
+  },
+  "str13": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^3)",
+        "sc": "O(n)",
+        "desc": "Generate all substrings and count those with exactly k distinct characters."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(k)",
+        "desc": "Use a sliding window to track the number of distinct characters in each substring, expanding and contracting as needed."
+      }
+    ]
+  },
+  "str15": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^3)",
+        "sc": "O(1)",
+        "desc": "Calculate beauty for each substring by checking all possible substrings and computing their beauty."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Compute the beauty of each substring in linear time using a sliding window approach to efficiently calculate the number of unique characters."
+      }
+    ]
+  },
+  "strh1": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(n)",
+        "desc": "Iterate through each bracket and try to balance it with every other bracket. This leads to a quadratic time complexity."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Use a counter to keep track of open brackets. For every close bracket, if there's an unmatched open bracket, increment the counter; otherwise, decrement it. The final count gives twice the minimum number of reversals needed."
+      }
+    ]
+  },
+  "strh2": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(n)",
+        "desc": "Iterate through each digit and compare it with the next to count consecutive occurrences. Store counts in a new string."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(n)",
+        "desc": "Use two pointers to traverse the string, counting consecutive identical characters and appending the count and character to the result string."
+      }
+    ]
+  },
+  "strh3": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n*m)",
+        "sc": "O(1)",
+        "desc": "Naive approach that slides a window of size m over the string and compares each substring with the pattern. It checks for equality character by character."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n + m)",
+        "sc": "O(1)",
+        "desc": "Rabin-Karp algorithm uses hashing to efficiently find if a pattern exists in a string. It computes hash values of the current window and the pattern, then checks for equality. If hashes match, it performs a character-by-character comparison."
+      }
+    ]
+  },
+  "strh4": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(n)",
+        "desc": "Compute the Z-function for each position by comparing characters with a sliding window."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(n)",
+        "desc": "Efficiently compute the Z-function using dynamic programming and two pointers to track the current segment of the string that is known to be matched."
+      }
+    ]
+  },
+  "strh6": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Generate all possible substrings and check if they are palindromes. For each substring, try to insert characters at the beginning or end to make it a palindrome."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n^2)",
+        "sc": "O(n^2)",
+        "desc": "Use dynamic programming to build a table that stores whether a substring is a palindrome. Iterate over all substrings and fill the table accordingly, ensuring minimal insertions by comparing characters at both ends."
+      }
+    ]
+  },
+  "strh7": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Generate all possible suffixes of the string and check if they form a palindrome when prepended to the original string."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Use KMP (Knuth-Morris-Pratt) algorithm to find the longest palindromic prefix, then append the reverse of the remaining suffix to make the entire string a palindrome."
+      }
+    ]
+  },
+  "strh8": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Check all prefixes of the string against all suffixes to find the longest prefix that is also a suffix."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(n)",
+        "desc": "Use KMP algorithm's preprocessing step (partial match table) to efficiently find the longest proper prefix which is also a suffix in linear time."
+      }
+    ]
+  },
+  "strh9": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^3)",
+        "sc": "O(1)",
+        "desc": "Generate all possible substrings and check if each is a palindrome."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Expand around center for both odd and even length palindromes."
+      }
+    ]
+  },
+  "ll1": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Traverse the list to count nodes and find middle element."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Use two pointers, fast and slow. Fast moves twice as fast as slow; when fast reaches end, slow is at middle."
+      }
+    ]
+  },
+  "ll2": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Iterate to find the position before the insertion point and insert. Traverse the list until the correct position is found."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(1)",
+        "sc": "O(1)",
+        "desc": "Directly insert the new node after a given node, requiring only a few pointer manipulations."
+      }
+    ]
+  },
+  "ll3": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Traverse the list to find the node before the target and then update pointers."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(1)",
+        "sc": "O(1)",
+        "desc": "Copy the value of the next node to the current node and bypass the next node."
+      }
+    ]
+  },
+  "ll4": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Iterate through the linked list once, counting nodes until reaching the end."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Use two pointers moving at different speeds (e.g., one twice as fast). When the faster pointer reaches the end, the slower pointer will be at the middle, which helps in calculating length."
+      }
+    ]
+  },
+  "ll5": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Traverse the linked list from head to tail until the target element is found or the end of the list is reached."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Similar to brute force, but use a pointer to traverse the list, which may be slightly optimized for some hardware architectures."
+      }
+    ]
+  },
+  "dll1": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Iterate through the list, for each node, traverse again to find its predecessor and successor, then swap them."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Traverse the list once, for each node, directly swap pointers of the current node with its predecessor and successor."
+      }
+    ]
+  },
+  "dll2": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Traverse the list to find the position where the new node should be inserted, then insert it. Traverse time is linear."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(1)",
+        "sc": "O(1)",
+        "desc": "Update the pointers of the existing nodes adjacent to the insertion point without traversing the list."
+      }
+    ]
+  },
+  "dll3": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Traverse the list to find the node and then update the pointers of its previous and next nodes. This approach requires a single pass through the list."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(1)",
+        "sc": "O(1)",
+        "desc": "Update the pointers of the given node's previous and next nodes to bypass the current node, effectively deleting it from the list without needing traversal."
+      }
+    ]
+  },
+  "dll4": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Iterate through the list and swap each node's pointers to reverse it."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Traverse the list, reversing each node's pointers in-place without using extra space."
+      }
+    ]
+  },
+  "llm5": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Check each node against every other node to find if they are the same. This involves nested loops."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Use Floyd's Tortoise and Hare algorithm. Move one pointer (tortoise) by one step and another pointer (hare) by two steps until they meet. Then, move one pointer to the start and keep both moving until they meet again, which gives the loop length."
+      }
+    ]
+  },
+  "llm6": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Traverse the list to find its length and then compare elements from the start and end moving towards the center."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Use a slow and fast pointer to find the middle, reverse the second half, and compare it with the first half. Restore the list if needed."
+      }
+    ]
+  },
+  "llm7": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Iterate through each node and move it to the end of the list if it's even."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Maintain two pointers, one for odd nodes and one for even nodes. Traverse the list, appending nodes to their respective lists, and finally connect them."
+      }
+    ]
+  },
+  "llm9": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Traverse the linked list to find the middle node and then delete it."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Use two pointers, one moving twice as fast as the other. When the faster pointer reaches the end, the slower pointer will be at the middle node, which can then be deleted."
+      }
+    ]
+  },
+  "llm10": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Iterate through each node and for each, compare it with every other node to find its correct position. Swap nodes until the list is sorted."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n log n)",
+        "sc": "O(log n)",
+        "desc": "Divide the list into halves recursively until each sublist has one or zero elements. Merge these sublists back together in a way that sorts them, resulting in a fully sorted list."
+      }
+    ]
+  },
+  "llm11": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n log n)",
+        "sc": "O(1)",
+        "desc": "Sort the linked list using a comparison-based sorting algorithm like merge sort or quicksort."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Use a three-pointer technique to partition the list into nodes with 0s, 1s, and 2s in a single pass through the list."
+      }
+    ]
+  },
+  "llm13": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n)",
+        "sc": "O(n)",
+        "desc": "Traverse the linked list to find the last node that is not a 9 and increment it. If all nodes are 9s, add an additional node with value 1 at the beginning."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Traverse the linked list from the end to the beginning, incrementing each node until a non-9 node is found. If all nodes are 9s, continue traversing and set each node to 0 until reaching the first non-9 node or the head, then increment that node by 1."
+      }
+    ]
+  },
+  "llh2": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(N^2)",
+        "sc": "O(1)",
+        "desc": "Traverse the list to find the nth node from the end, then detach and attach it to the beginning."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(N)",
+        "sc": "O(1)",
+        "desc": "Calculate the length of the list, determine the new head position, adjust pointers accordingly to rotate the list in one pass."
+      }
+    ]
+  },
+  "llh3": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Traverse through each node and for each node with a child, traverse to the end of its child list, then link it back to the original list. Repeat this process."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Use an iterative approach with three pointers: current, tail, and next. Traverse the list and for each node with a child, link the current node's next to the child, then find the end of the child list and connect it back to the original list. Move the current pointer to the next node."
+      }
+    ]
+  },
+  "rec1": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Iteratively convert each character to its integer value and accumulate the result."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Recursively process each character, updating the result by multiplying the accumulated value by 10 and adding the new digit's integer value."
+      }
+    ]
+  },
+  "rec3": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Check all numbers from 1 to n. For each number, check if it is a good number by verifying its prime factors."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n log log n)",
+        "sc": "O(n)",
+        "desc": "Use Sieve of Eratosthenes to find all prime numbers up to n. Then, use these primes to determine which numbers are good by checking their prime factors."
+      }
+    ]
+  },
+  "rec4": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(n)",
+        "desc": "Reverse the stack, then insert each element into a new sorted stack using a helper function."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n log n)",
+        "sc": "O(n)",
+        "desc": "Recursively sort the stack by removing its top element and sorting the rest. Then, insert the top element back into the sorted stack in the correct position."
+      }
+    ]
+  },
+  "rec5": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(n)",
+        "desc": "Reversing a stack using recursion can be done by popping the top element and recursively reversing the remaining stack. Then, insert the popped element at the bottom of the reversed stack."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(n)",
+        "desc": "Optimize the reversal process by using an auxiliary function to insert an element at the bottom of the stack. This reduces the time complexity compared to the brute-force method."
+      }
+    ]
+  },
+  "sub1": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(2^n)",
+        "sc": "O(n)",
+        "desc": "Generate all binary strings by recursively appending '0' and '1' to each prefix of the string."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(2^n)",
+        "sc": "O(n)",
+        "desc": "Use a recursive function with two parameters: the current length of the binary string and the current string itself, building all combinations by appending '0' or '1'."
+      }
+    ]
+  },
+  "sub3": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(2^n)",
+        "sc": "O(n)",
+        "desc": "Generate all subsequences by iterating through each element and deciding to include or exclude it. Use recursion with backtracking."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(2^n)",
+        "sc": "O(n)",
+        "desc": "Use a bitmasking technique where each bit represents whether an element is included in the current subsequence. Iterate through all possible bitmasks from 0 to 2^n - 1 to generate subsequences."
+      }
+    ]
+  },
+  "sub4": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(2^n)",
+        "sc": "O(n)",
+        "desc": "Generate all subsequences using recursion and count those with sum K. Uses exponential time due to all subsets being considered."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n * k)",
+        "sc": "O(k)",
+        "desc": "Use dynamic programming with a 1D array to store the number of ways to achieve each sum up to K. Iterate through the array and update counts for each element in the sequence."
+      }
+    ]
+  },
+  "sub5": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(2^n)",
+        "sc": "O(n)",
+        "desc": "Generate all subsequences of the array and check if any subsequence has a sum equal to K. This involves exploring each element either being included or excluded."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n * k)",
+        "sc": "O(k)",
+        "desc": "Use dynamic programming to build a table where dp[i][j] indicates if there's a subsequence of the first i elements that sums to j. Iterate through each element and update the table accordingly."
+      }
+    ]
+  },
+  "sub7": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(2^n * n)",
+        "sc": "O(n)",
+        "desc": "Generate all subsets of candidates. Filter those that sum up to target and remove duplicates."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(2^n * n)",
+        "sc": "O(n)",
+        "desc": "Sort candidates first. Use backtracking to explore possible combinations, skipping duplicates during the process."
+      }
+    ]
+  },
+  "sub8": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(2^n)",
+        "sc": "O(n)",
+        "desc": "Generate all subsets and check their sums. This approach has exponential time complexity."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(2^n * n)",
+        "sc": "O(n)",
+        "desc": "Use a recursive function to explore all subsets, checking each subset's sum against the target."
+      }
+    ]
+  },
+  "sub9": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(2^n * n)",
+        "sc": "O(n)",
+        "desc": "Generate all subsets using recursion and store unique ones."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(2^n)",
+        "sc": "O(n)",
+        "desc": "Sort the array to avoid duplicates, then use backtracking to explore all subsets while skipping duplicates."
+      }
+    ]
+  },
+  "sub10": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(2^n)",
+        "sc": "O(n)",
+        "desc": "Generate all combinations of numbers from 1 to 9 and check if their sum equals k. Use recursion to explore all possibilities."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(C(9,n))",
+        "sc": "O(n)",
+        "desc": "Use backtracking to explore combinations of numbers from 1 to 9. Recursively build combinations and backtrack when necessary to find valid ones that sum to k."
+      }
+    ]
+  },
+  "sub11": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(4^n * n)",
+        "sc": "O(n)",
+        "desc": "Generate all combinations by recursively iterating through each digit's possible letters and concatenating them. The time complexity is exponential due to the branching factor of 4 (except for '7' and '9')."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(4^n)",
+        "sc": "O(n)",
+        "desc": "Use a backtracking approach to explore all possible combinations. This method generates each combination in a single path of recursion, optimizing space complexity by avoiding the need for additional data structures like arrays or strings."
+      }
+    ]
+  },
+  "rh2": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2 * 4^k)",
+        "sc": "O(k)",
+        "desc": "Try every cell as a starting point and explore all four directions for the word, using recursion."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n * m * 4^k)",
+        "sc": "O(k)",
+        "desc": "Optimize by checking if the current character of the word matches the grid cell before making recursive calls, avoiding unnecessary checks."
+      }
+    ]
+  },
+  "rh4": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(4^n)",
+        "sc": "O(n)",
+        "desc": "Try all paths recursively until the destination is reached or a wall is hit. Explore every possible path."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(2^n)",
+        "sc": "O(n)",
+        "desc": "Use recursion to explore paths, but only if they lead to a solution. Skip invalid paths early."
+      }
+    ]
+  },
+  "rh5": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2 * 2^n)",
+        "sc": "O(n)",
+        "desc": "Try every possible way to break the word by checking each prefix against a set of words. Recursively explore all combinations."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n^3)",
+        "sc": "O(n^2)",
+        "desc": "Use dynamic programming to store results of subproblems and avoid redundant computations. Iterate through the word, checking for valid breaks and building up solutions."
+      }
+    ]
+  },
+  "rh6": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(V * (V - 1)^(V - 2))",
+        "sc": "O(1)",
+        "desc": "Try all possible color combinations for each vertex. Exponential in time due to high branching factor."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(V + E)",
+        "sc": "O(V + E)",
+        "desc": "Use backtracking, pruning invalid colors and only exploring valid ones. Efficiently handles constraints through recursion."
+      }
+    ]
+  },
+  "rh8": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(4^n)",
+        "sc": "O(n)",
+        "desc": "Try all possible operators (+, -, *, none) between numbers. This generates all combinations and evaluates them."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n * 2^n)",
+        "sc": "O(n)",
+        "desc": "Use dynamic programming to store intermediate results of adding or subtracting the last number. Recursively explore all possible expressions until reaching the end."
+      }
+    ]
+  },
+  "bit6": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Check each bit from right to left until an unset bit is found and set it. Traverse the entire bit length of the number."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(1)",
+        "sc": "O(1)",
+        "desc": "Use a bitwise OR operation with its two's complement to flip the rightmost unset bit. This approach modifies only the necessary bit without iterating through all bits."
+      }
+    ]
+  },
+  "biti6": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(2^n * n)",
+        "sc": "O(n)",
+        "desc": "Generate all subsets by iterating through each element and deciding whether to include it or not. Each subset can be represented as a binary number."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(2^n)",
+        "sc": "O(n)",
+        "desc": "Use bit manipulation to generate each subset. Each number from 0 to 2^n - 1 represents a unique subset, where the ith bit indicates whether the ith element is included."
+      }
+    ]
+  },
+  "bita1": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n\u221an)",
+        "sc": "O(1)",
+        "desc": "Check each number up to n for divisibility. For each divisor found, check if it's prime."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(sqrt(n))",
+        "sc": "O(1)",
+        "desc": "Iterate from 2 to sqrt(n) checking for divisors. Use bit manipulation to efficiently check and set primes in a sieve-like approach."
+      }
+    ]
+  },
+  "bita2": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Check each number from 1 to n if it divides the given number."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(sqrt(n))",
+        "sc": "O(1)",
+        "desc": "Iterate only up to the square root of the number and check for divisors, storing both divisors when found."
+      }
+    ]
+  },
+  "bita4": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Check each number from 2 to n if it divides the given number. If it does, divide and continue checking."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(sqrt(n))",
+        "sc": "O(1)",
+        "desc": "Divide the given number by the smallest prime factor found, starting from 2, until all factors are found. Only check up to the square root of the number."
+      }
+    ]
+  },
+  "sq3": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(n)",
+        "desc": "Use two queues to simulate stack operations. Enqueue elements into the first queue and transfer all but one element to the second queue, then swap them. This approach is inefficient for multiple push and pop operations."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(1) for each operation",
+        "sc": "O(n)",
+        "desc": "Use one queue. For push, enqueue the element to the queue. For pop, dequeue all elements except the last one, then dequeue and return the last element. For peek, perform the pop operation but re-enqueue the popped element before returning it."
+      }
+    ]
+  },
+  "sq4": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(n)",
+        "desc": "Using two stacks. Enqueue by pushing to stack1. Dequeue by popping all elements from stack1 to stack2, then pop the top of stack2."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(1) amortized",
+        "sc": "O(n)",
+        "desc": "Maintain two stacks. Push to stack1 for enqueue. For dequeue, if stack2 is empty, transfer all from stack1; then pop from stack2."
+      }
+    ]
+  },
+  "sq5": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(1)",
+        "sc": "O(n)",
+        "desc": "Use a linked list to store elements. Each element points to the next in line, making operations like push and pop efficient."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(1)",
+        "sc": "O(n)",
+        "desc": "Maintain a pointer to the top of the stack. Perform all operations (push, pop, peek) by adjusting this pointer and updating linked list nodes."
+      }
+    ]
+  },
+  "sq6": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n)",
+        "sc": "O(n)",
+        "desc": "Use an array to store elements. Enqueue operation appends at the end and has O(1) time complexity. Dequeue operation removes from the front, which can require shifting all other elements forward, resulting in O(n) time complexity."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(1)",
+        "sc": "O(n)",
+        "desc": "Use a linked list where each node has a reference to the next node. Enqueue operation inserts at the tail, and dequeue operation removes from the head, both with O(1) time complexity."
+      }
+    ]
+  },
+  "sqp1": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(n)",
+        "desc": "Converts an infix expression to postfix using a stack. The brute force approach involves scanning the expression and deciding whether to push operators onto the stack or directly output them based on precedence and associativity rules."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(n)",
+        "desc": "The optimal approach uses a stack to store operators during conversion. It processes each character of the infix expression, pushing operands directly into the output and applying operator precedence rules using the stack."
+      }
+    ]
+  },
+  "sqp2": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(n)",
+        "desc": "Convert prefix to infix by iterating from left to right and using a stack. For each character, if it's an operator, pop two elements from the stack, create a sub-expression, and push it back onto the stack."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(n)",
+        "desc": "Use a stack to keep track of operands. When encountering an operator, pop the required number of operands from the stack, create a sub-expression with the operator and operands, and push the result back onto the stack."
+      }
+    ]
+  },
+  "sqp3": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(n)",
+        "desc": "Convert prefix to infix first using a stack, then convert infix to postfix. Infix conversion is O(n^2) due to nested loops."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(n)",
+        "desc": "Use two stacks: one for operators and one for operands. Traverse the prefix string from right to left, pushing numbers onto the operand stack and applying operators to the top elements of both stacks when an operator is encountered."
+      }
+    ]
+  },
+  "sqp4": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(n)",
+        "desc": "Convert postfix to infix first, then convert infix to prefix. Infix conversion takes O(n^2) due to nested loops, while prefix conversion is linear."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(n)",
+        "desc": "Use a stack to keep operators and operands, pushing them onto the stack as you iterate through postfix. When encountering an operator, pop the required number of operands from the stack, apply the operator, and push the result back onto the stack. The final result will be the only element left in the stack."
+      }
+    ]
+  },
+  "sqp5": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(n)",
+        "desc": "Convert postfix to infix using a stack. For each token in postfix, push onto the stack if it's an operand. If it's an operator, pop two operands from the stack, create an expression with the operator and operands, and push the new expression back onto the stack."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(n)",
+        "desc": "Use a single stack to build the infix expression. For each token in postfix, if it's an operand, push it onto the stack. If it's an operator, pop two operands, create an infix expression with parentheses around them and the operator, and push this new expression back onto the stack."
+      }
+    ]
+  },
+  "sqp6": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(n)",
+        "desc": "Convert infix to postfix first using a stack. Then convert the postfix expression to prefix by reversing it and applying the same rules used for postfix to prefix conversion."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(n)",
+        "desc": "Use two stacks: one for operators and one for operands. Iterate through the expression from right to left, pushing operands directly to the operand stack and applying rules based on operator precedence and associativity."
+      }
+    ]
+  },
+  "sqm2": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(n)",
+        "desc": "Check each element and find the next greater element by scanning the entire array from that point."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(2n) = O(n)",
+        "sc": "O(n)",
+        "desc": "Use a stack to keep track of elements for which we haven't found the next greater element yet. Iterate through the array twice."
+      }
+    ]
+  },
+  "sqm3": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Compare each element with all subsequent elements to find the next smaller element. This results in a nested loop, leading to quadratic time complexity."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(n)",
+        "desc": "Use a stack to keep track of elements for which we haven't found the next smaller element yet. For each new element, pop from the stack until the stack is empty or the top of the stack is greater than the current element."
+      }
+    ]
+  },
+  "sqm4": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "For each element, count how many elements to its right are greater than it by iterating through all elements to its right."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(n)",
+        "desc": "Use a stack to keep track of elements and their counts of NGEs. Iterate from the end, pushing elements onto the stack if they are less than or equal to the current element; otherwise, pop elements and count until finding a greater one, then push the current element with its count."
+      }
+    ]
+  },
+  "sqm6": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^3)",
+        "sc": "O(1)",
+        "desc": "Iterate through all subarrays and find the minimum of each. Sum these minimums."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(n)",
+        "desc": "Use a stack to keep track of indices in increasing order of their corresponding values. For each element, calculate its contribution to the sum by determining the number of subarrays where it is the minimum."
+      }
+    ]
+  },
+  "sqm7": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Simulate each asteroid collision directly by iterating through all pairs of asteroids."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(n)",
+        "desc": "Use a stack to keep track of surviving asteroids, pushing new ones onto the stack if they don't collide with the top of the stack."
+      }
+    ]
+  },
+  "sqm8": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^3)",
+        "sc": "O(1)",
+        "desc": "Iterate through all possible subarrays, calculate their sum and range, then find the maximum difference."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n log n)",
+        "sc": "O(n)",
+        "desc": "Use a monotonic stack to keep track of elements in increasing order. For each element, calculate its contribution to the sum and range by finding previous smaller and next greater elements."
+      }
+    ]
+  },
+  "sqm9": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(n)",
+        "desc": "Iterate through each digit and remove it, then find the minimum number from the remaining digits. Repeat k times."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(n)",
+        "desc": "Use a stack to keep track of digits. Iterate through the digits, and if the current digit is smaller than the last digit in the stack, pop it. This ensures the result number is as small as possible."
+      }
+    ]
+  },
+  "sqm11": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(m * n^2)",
+        "sc": "O(1)",
+        "desc": "Iterate through each cell and for each '1', extend to the right and down to find the maximum rectangle."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(m * n)",
+        "sc": "O(n)",
+        "desc": "Convert each row into a histogram of heights, then use a stack-based approach to find the largest rectangle in each histogram."
+      }
+    ]
+  },
+  "sqi2": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Calculate span for each day by counting consecutive days with lower prices."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(n)",
+        "desc": "Use a stack to keep track of indices, ensuring the stack is always in decreasing order of stock prices. For each price, pop elements until a higher price is found."
+      }
+    ]
+  },
+  "sqi3": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Check every pair of people if one knows the other. If so, mark the known person as not a celebrity."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Use two pointers to find a potential celebrity candidate and then verify it by checking all other people."
+      }
+    ]
+  },
+  "sqi5": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(n)",
+        "desc": "Use a hash map to store key-value pairs and another hash map to track frequency of each key. For get operation, retrieve the value from the hash map. For put operation, update the value and increase the frequency count in the frequency tracker."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(1)",
+        "sc": "O(n)",
+        "desc": "Use a hash map to store key-value pairs and a doubly linked list to maintain the frequency order. Each node in the linked list contains a hash map of keys with the same frequency, and a pointer to the next higher frequency node. For get operation, retrieve value from the key's corresponding node. For put operation, update the value and adjust the frequency nodes accordingly."
+      }
+    ]
+  },
+  "sw2": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Iterate through each subarray and count flips needed. Track the maximum consecutive ones."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Use a sliding window to keep track of zeros. Expand window if zero count is less than k, shrink otherwise. Max length of window gives the result."
+      }
+    ]
+  },
+  "sw3": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Iterate over all possible subarrays and check if they contain at most two distinct types of fruits."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Use a sliding window to keep track of the number of each fruit type within the current window. Expand the window by moving the right pointer and shrink it from the left when more than two types of fruits are found."
+      }
+    ]
+  },
+  "sw4": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Check all substrings and count character replacements needed. Find the longest substring that can be formed with k replacements."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Use a sliding window to maintain a window of characters where at most k replacements are needed. Expand the window by including new characters and shrink it from the left if necessary."
+      }
+    ]
+  },
+  "sw5": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Check all possible subarrays and count those with a sum equal to target."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(n)",
+        "desc": "Use a hashmap to store the prefix sums and their frequencies to efficiently find subarrays with the given sum."
+      }
+    ]
+  },
+  "sw6": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^3)",
+        "sc": "O(1)",
+        "desc": "Generate all possible subarrays and count those with an even number of odd numbers."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Use a sliding window to keep track of the current number of odd numbers in the window. Expand the window by moving the right pointer and shrink it by moving the left pointer when the condition is met."
+      }
+    ]
+  },
+  "sw7": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^3)",
+        "sc": "O(1)",
+        "desc": "Check every possible substring of length 3 or more and count those that contain all three characters."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Use a sliding window to track the minimum length of a substring containing all three characters by maintaining counts of each character."
+      }
+    ]
+  },
+  "sw8": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^3)",
+        "sc": "O(1)",
+        "desc": "Consider all possible subsequences and calculate their sums. Track the maximum sum encountered."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n log n)",
+        "sc": "O(1)",
+        "desc": "Sort the cards, then use a sliding window of size k (half the length of the array) to find the minimum sum of any subsequence of size k. Subtract this from the total sum of all cards to get the maximum points obtainable."
+      }
+    ]
+  },
+  "swh1": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2 * k)",
+        "sc": "O(k)",
+        "desc": "Check all substrings and use a set to track distinct characters. If more than k, skip."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(k)",
+        "desc": "Use a sliding window with two pointers and a hashmap to count character occurrences. Expand and contract window based on distinct character count."
+      }
+    ]
+  },
+  "swh2": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^3)",
+        "sc": "O(k)",
+        "desc": "Iterate through all subarrays and count unique integers using a hash set."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(k)",
+        "desc": "Use two pointers to maintain a sliding window that contains at most k distinct integers, counting valid subarrays as the window expands."
+      }
+    ]
+  },
+  "swh4": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Iterate through all possible substrings of the given string and check if each substring contains the subsequence. Track the minimum length of such substrings."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(k)",
+        "desc": "Use a sliding window approach with two pointers to find the smallest window that contains all characters of the subsequence. Maintain a frequency map of the subsequence and adjust the window size accordingly."
+      }
+    ]
+  },
+  "hp1": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(n)",
+        "desc": "Naive approach involves maintaining a sorted list and inserting new elements by shifting them to maintain order. Inefficient for large lists."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(log n)",
+        "sc": "O(1)",
+        "desc": "Optimal algorithm uses binary heap (complete binary tree) to insert or delete elements efficiently, maintaining the heap property."
+      }
+    ]
+  },
+  "hp2": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Builds a min heap by inserting each element into the heap and maintaining the property after insertion."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n log n)",
+        "sc": "O(1)",
+        "desc": "Converts an array into a min heap in-place using the bottom-up approach, followed by extracting elements to form a sorted array in ascending order."
+      }
+    ]
+  },
+  "hp3": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Check each node against its children to ensure the min heap property is maintained."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Verify the min heap property from the bottom up, only checking parent nodes with their left and right children if they exist."
+      }
+    ]
+  },
+  "hp4": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n log n)",
+        "sc": "O(n)",
+        "desc": "Transform each node to a max heap by swapping with its parent if necessary and then recursively fixing the affected subtree."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Heapify down from the root, starting from the last non-leaf node to the root. For each node, swap it with its child if it's smaller than any of them and recursively fix the affected subtree."
+      }
+    ]
+  },
+  "hpm2": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n log n)",
+        "sc": "O(n)",
+        "desc": "Sort the array and return the kth element."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(k log k + (n-k) log k)",
+        "sc": "O(k)",
+        "desc": "Use a min-heap to keep track of the smallest elements. Extract the root k times to find the kth smallest element."
+      }
+    ]
+  },
+  "hpm3": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(K * N log K)",
+        "sc": "O(K)",
+        "desc": "Merge each of the K sorted arrays into a single sorted array. Use a min-heap to efficiently get the smallest element from each array."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(N log K)",
+        "sc": "O(K)",
+        "desc": "Use a min-heap to keep track of the smallest elements from each of the K arrays. Continuously extract the minimum and add it to the result, then push the next element from the same array into the heap."
+      }
+    ]
+  },
+  "hpm4": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(nk log nk)",
+        "sc": "O(nk)",
+        "desc": "Merge by iterating through all elements of all lists and maintaining a min-heap to keep track of the smallest element. Extract from heap, insert next element from same list into heap."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n log k)",
+        "sc": "O(k)",
+        "desc": "Use a min-heap with initial elements from all lists to find the smallest element. Replace the smallest with the next element from its list, maintaining heap property."
+      }
+    ]
+  },
+  "hpm5": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Compare each element with every other element to find its rank."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n log n)",
+        "sc": "O(n)",
+        "desc": "Sort the array, then iterate through it to assign ranks based on sorted positions."
+      }
+    ]
+  },
+  "hpm6": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Sort tasks by their execution time and repeatedly pick the task with the shortest duration until all tasks are scheduled."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n log n)",
+        "sc": "O(1)",
+        "desc": "Use a min-heap to always process the task with the earliest completion time next, ensuring tasks are completed as soon as possible."
+      }
+    ]
+  },
+  "hpm7": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Check each card to see if it can form a straight. If so, remove it and continue. Continue until all cards are used or no more straights can be formed."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n log n)",
+        "sc": "O(1)",
+        "desc": "Sort the cards first. Then iterate through them, using a sliding window to check for straights. If a straight is found, increment the start of the window and continue. This ensures all cards are checked efficiently."
+      }
+    ]
+  },
+  "hph1": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n log n)",
+        "sc": "O(n)",
+        "desc": "Post each tweet and sort all posts globally to retrieve the most recent ones. This is inefficient due to sorting every insertion."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(log n) per operation",
+        "sc": "O(n)",
+        "desc": "Use a min-heap to store the tweets for each user, allowing efficient retrieval of the latest tweets through merging sorted lists."
+      }
+    ]
+  },
+  "hph2": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Connect ropes by repeatedly selecting the two smallest ropes and merging them until all ropes are connected."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n log n)",
+        "sc": "O(1)",
+        "desc": "Use a min-heap to always get the two smallest ropes efficiently, merge them, and insert back into the heap. Repeat until only one rope remains."
+      }
+    ]
+  },
+  "hph3": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(n)",
+        "desc": "Sort all elements each time a new element is added and return the k-th largest."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(log k)",
+        "sc": "O(k)",
+        "desc": "Use a min-heap of size k to keep track of the k largest elements. Insertion takes log k time, and retrieving the k-th largest is straightforward."
+      }
+    ]
+  },
+  "hph4": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2 log n)",
+        "sc": "O(n^2)",
+        "desc": "Generate all possible pairs from two arrays and sort them to find the maximum sum combination. This method is straightforward but inefficient for large input sizes."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n log k)",
+        "sc": "O(k)",
+        "desc": "Use a max heap to keep track of potential combinations efficiently. Insert initial pairs into the heap, then iteratively extract and expand until finding the maximum sum combination."
+      }
+    ]
+  },
+  "gr1": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(kn)",
+        "sc": "O(1)",
+        "desc": "Distribute each cookie to every child until all cookies are assigned. Check if the current child can be satisfied with the current cookie."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n log n + k log k)",
+        "sc": "O(1)",
+        "desc": "Sort both children and cookies arrays. Assign smallest available cookie to each child that can satisfy it, moving to next child if not possible."
+      }
+    ]
+  },
+  "gr4": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Count coins for each customer and check if change can be made using available coins."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Sort the bills in descending order and use greedy approach to minimize the number of $5 bills used first."
+      }
+    ]
+  },
+  "gr5": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(n)",
+        "desc": "Check all possible combinations of parentheses for each position."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(n)",
+        "desc": "Use a stack to push opening brackets and pop when closing bracket matches the top of the stack."
+      }
+    ]
+  },
+  "grm1": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(n)",
+        "desc": "Sort meetings by start time. Try all pairs of meetings to check for overlaps."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n log n)",
+        "sc": "O(1)",
+        "desc": "Sort meetings by end time. Always select the meeting that finishes first, maximizing the number of meetings in the room."
+      }
+    ]
+  },
+  "grm4": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Iterate through each train arrival and calculate platforms needed for that time, updating max platforms required."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n log n)",
+        "sc": "O(n)",
+        "desc": "Sort arrival and departure times. Use two pointers to track overlapping intervals, updating the maximum number of platforms as needed."
+      }
+    ]
+  },
+  "grm5": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Sort jobs by their deadlines. Iterate through each job and for each, check all possible positions to fit it in without overlapping."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n log n)",
+        "sc": "O(n)",
+        "desc": "Sort jobs by their profit in descending order. Use a max-heap to keep track of the tasks that can be completed within their deadlines, ensuring maximum profit."
+      }
+    ]
+  },
+  "grm7": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(n)",
+        "desc": "Sort jobs by their burst times and simulate the scheduling process, allocating each job to the CPU in order of arrival until completion."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n log n)",
+        "sc": "O(1)",
+        "desc": "Sort jobs by their burst times. Use a priority queue (min-heap) to always execute the job with the shortest remaining time next, minimizing the average waiting time."
+      }
+    ]
+  },
+  "bt1": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(h)",
+        "desc": "Traverse the tree in preorder to find the maximum depth recursively."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(h)",
+        "desc": "Use postorder traversal to calculate the height of each subtree and determine if it is a balanced binary tree."
+      }
+    ]
+  },
+  "bt2": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(h)",
+        "desc": "Construct the binary tree by iterating through each node and inserting it into its correct position. This can be done recursively or iteratively, leading to a time complexity of O(n^2) due to the insertion process."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(h)",
+        "desc": "Use a recursive approach where each node is inserted in constant time. This involves traversing the tree and finding the correct position for the new node, resulting in an overall time complexity of O(n)."
+      }
+    ]
+  },
+  "bt3": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(h)",
+        "desc": "Recursively visit each node. For each node, calculate the height of its left and right subtrees and compare."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(h)",
+        "desc": "Use a helper function to pass the height of subtrees from bottom up, avoiding repeated calculations."
+      }
+    ]
+  },
+  "btm7": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(h)",
+        "desc": "Traverse the tree to collect left boundary, leaves (both sides), and right boundary in order. Repeat for each side."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(h)",
+        "desc": "Iterate using pre-order traversal to get top view, then in-order traversal to get left subtree leaves, post-order to get right subtree leaves, and finally reverse the right boundary traversal."
+      }
+    ]
+  },
+  "btm8": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n log n)",
+        "sc": "O(n)",
+        "desc": "Sort nodes by their x-coordinate and then y-coordinate. Traverse the tree in preorder and use a map to store nodes at each x-coordinate."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(n)",
+        "desc": "Use a map to group nodes by their x-coordinate during a level-order traversal (BFS). Within each group, sort nodes by y-coordinate. This ensures the correct order is maintained without additional sorting."
+      }
+    ]
+  },
+  "btm9": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(n)",
+        "desc": "Perform level order traversal and print the first node of each level."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(w)",
+        "desc": "Use a map to store the first node encountered at each horizontal distance from the root. Perform breadth-first search (BFS) and print nodes in order of increasing horizontal distance."
+      }
+    ]
+  },
+  "btm10": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(h)",
+        "desc": "Traverse each node and find its position from left to right at the bottom level. Use a hash map to store nodes at each horizontal distance."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(w)",
+        "desc": "Use level order traversal (BFS) and keep track of the last node encountered at each horizontal distance. Store these in a hash map. The keys represent the horizontal distances, and the values are the nodes' values."
+      }
+    ]
+  },
+  "btm12": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(h)",
+        "desc": "Check if each node is symmetric by comparing its left and right subtrees recursively. This involves multiple traversals of the tree."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(h)",
+        "desc": "Use a helper function to compare nodes' values while checking if their children are symmetric. Utilizes recursion and avoids redundant checks by comparing corresponding nodes."
+      }
+    ]
+  },
+  "bth1": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(h)",
+        "desc": "Iterate through each node and check if the path from the root to any leaf includes the target node."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(h)",
+        "desc": "Use a recursive approach to traverse the tree, checking if the current node is in the path. If it is, return true; otherwise, continue searching in its left and right subtrees."
+      }
+    ]
+  },
+  "bth4": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(h)",
+        "desc": "Check each node if its children sum to it, recursively. High time complexity due to repeated traversals."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(h)",
+        "desc": "Use postorder traversal to compare a node's value with the sum of its children. If mismatched, return false. If all match, true."
+      }
+    ]
+  },
+  "bth5": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(h)",
+        "desc": "For each node in the tree, perform a level order traversal to find nodes at distance K. This involves multiple traversals."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(h)",
+        "desc": "Use two traversals: first find the target node, then perform a level order traversal from that node to print nodes at distance K."
+      }
+    ]
+  },
+  "bth6": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(h)",
+        "desc": "Traverse the tree to find the node. Then perform a BFS from that node to calculate the time taken to burn the entire tree."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(n)",
+        "desc": "Use DFS to find the parent of each node and store it in a map. Then perform BFS from the target node using the parent map to calculate the time taken to burn the entire tree."
+      }
+    ]
+  },
+  "bth7": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n)",
+        "sc": "O(h)",
+        "desc": "Traverse through each node in the tree to count them. Uses recursion or iteration, with a stack for iterative approach."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(log^2 n)",
+        "sc": "O(1)",
+        "desc": "Determine the height of the leftmost and rightmost paths to identify if the tree is a complete binary tree. If it is, calculate the total nodes using the formula 2^h - 1. Otherwise, recursively count nodes in the full subtree plus the remaining nodes."
+      }
+    ]
+  },
+  "bth8": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^3)",
+        "sc": "O(h)",
+        "desc": "Generate all possible combinations of left and right subtrees recursively. For each combination, construct the binary tree and check if it's unique."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n^2)",
+        "sc": "O(n)",
+        "desc": "Use a map to store the frequency of each subtree based on its structure. Incrementally build the tree while checking for uniqueness by comparing subtree structures."
+      }
+    ]
+  },
+  "bth10": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(n)",
+        "desc": "Recursively find the root in inorder, partition the arrays, and construct subtrees. Use extra space for recursion stack."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(n)",
+        "desc": "Use a hashmap to store inorder indices for O(1) access. Recursively build the tree from postorder, using pre and in index tracking."
+      }
+    ]
+  },
+  "bth12": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(h)",
+        "desc": "Visit each node and perform recursive preorder traversal. This approach visits nodes multiple times and uses extra space for recursion stack."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Use Morris Traversal to perform preorder traversal without additional space, by utilizing the existing tree structure to save the next node information."
+      }
+    ]
+  },
+  "bth13": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(h)",
+        "desc": "Traverse tree using recursion or stack, visiting nodes and printing them. Uses extra space for recursion stack."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Morris traversal modifies the tree structure to link predecessor nodes during traversal without additional space (except pointers). Restores original tree after traversal."
+      }
+    ]
+  },
+  "bst1": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(h)",
+        "desc": "Insert each node by comparing it with all existing nodes. Recursion depth is height of tree."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(log n)",
+        "sc": "O(1)",
+        "desc": "Compare the new node's value with current node's value to decide left or right subtree insertion. Repeat until correct position found."
+      }
+    ]
+  },
+  "bst2": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(h)",
+        "sc": "O(1)",
+        "desc": "Traverse from root to leaf, checking each node. Time complexity is proportional to the height of the tree."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(h)",
+        "sc": "O(1)",
+        "desc": "Utilize BST properties by comparing keys with current node value and deciding left or right child to traverse. This ensures a time complexity of O(height)."
+      }
+    ]
+  },
+  "bst3": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n)",
+        "sc": "O(h)",
+        "desc": "Traverse the BST in-order (left-root-right) and keep track of the minimum and maximum values encountered."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(h)",
+        "sc": "O(1)",
+        "desc": "Utilize properties of BST: min value is leftmost node, max value is rightmost node. Traverse to find these nodes directly without recursion or additional storage."
+      }
+    ]
+  },
+  "bstp1": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n)",
+        "sc": "O(h)",
+        "desc": "Traverse the tree to find all nodes and keep track of the largest node that is less than or equal to the target."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(h)",
+        "sc": "O(1)",
+        "desc": "Use a recursive approach to traverse the tree. If the current node's value is greater than or equal to the target, it could be a potential answer and we recursively search in the left subtree. Otherwise, we search in the right subtree."
+      }
+    ]
+  },
+  "bstp2": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n)",
+        "sc": "O(h)",
+        "desc": "Traverse the BST in-order to collect all elements and find the largest element smaller than or equal to the given key."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(h)",
+        "sc": "O(1)",
+        "desc": "Use a recursive approach to traverse the tree, comparing each node's value with the given key and deciding which subtree to explore next based on the comparison."
+      }
+    ]
+  },
+  "bstp3": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(h)",
+        "sc": "O(1)",
+        "desc": "Iteratively traverse down from the root to find the correct insertion point. If a null node is found, insert the new node there."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(h)",
+        "sc": "O(1)",
+        "desc": "Recursively traverse down from the root to find the correct insertion point. If a null node is encountered, create and insert the new node."
+      }
+    ]
+  },
+  "bstp4": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(h)",
+        "sc": "O(h)",
+        "desc": "Traverse to the node and then find its inorder successor or predecessor to replace it."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(h)",
+        "sc": "O(1)",
+        "desc": "Use a pointer to traverse and replace the node with its inorder successor, then delete the successor."
+      }
+    ]
+  },
+  "bstp7": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n)",
+        "sc": "O(h)",
+        "desc": "Iterate through each node from root to find both p and q. Track their paths and find the last common node."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(h)",
+        "sc": "O(1)",
+        "desc": "Leverage BST properties: if both nodes are less than current, move left; if both are greater, move right. Stop when one node splits the path."
+      }
+    ]
+  },
+  "bstp8": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(h)",
+        "desc": "Construct BST by inserting each node in a binary search manner. For each element, traverse the tree to find its correct position."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Use a stack to simulate the recursive process of building the BST. Track the lower bound for insertion and update it as we insert nodes."
+      }
+    ]
+  },
+  "bstp9": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(h)",
+        "sc": "O(h)",
+        "desc": "Traverse from root to target node, maintaining predecessor and successor."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(h)",
+        "sc": "O(1)",
+        "desc": "Use in-order traversal iteratively or recursively with a stack to find predecessor and successor efficiently."
+      }
+    ]
+  },
+  "bstp10": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(h)",
+        "sc": "O(n)",
+        "desc": "Maintain a stack to store all nodes up to the current node. This allows for constant time next() and hasNext() operations."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(1) amortized",
+        "sc": "O(h)",
+        "desc": "Use an in-order traversal technique where a stack is used to simulate recursive calls. This approach ensures constant time complexity for both next() and hasNext()."
+      }
+    ]
+  },
+  "bstp11": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(h)",
+        "desc": "Iterate through all pairs of nodes and check if their sum equals the target. This is inefficient for large trees."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(h)",
+        "desc": "Use two pointers: one starting from the smallest node (in-order traversal) and another from the largest node (reverse in-order). Adjust based on the sum compared to the target."
+      }
+    ]
+  },
+  "g1": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(V + E)",
+        "sc": "O(V + E)",
+        "desc": "Create adjacency list by iterating through all edges and adding them to their respective vertex lists."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(V + E)",
+        "sc": "O(V + E)",
+        "desc": "Use a hash map for adjacency list representation, ensuring efficient insertion and lookup of vertices and edges."
+      }
+    ]
+  },
+  "g2": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(V^2)",
+        "sc": "O(V + E)",
+        "desc": "Represent each vertex as a key with an array of its adjacent vertices. Construct this for all vertices."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(E)",
+        "sc": "O(V + E)",
+        "desc": "Use a dictionary where keys are vertices and values are lists of their neighbors to represent the graph efficiently."
+      }
+    ]
+  },
+  "g3": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(V*E)",
+        "sc": "O(V+E)",
+        "desc": "Iterate through each vertex and perform a DFS or BFS to explore all reachable vertices. Repeat for unvisited vertices."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(V+E)",
+        "sc": "O(V)",
+        "desc": "Use DFS or BFS to traverse the graph, marking visited nodes. Each visit starts a new component. Count and return the number of visits as components."
+      }
+    ]
+  },
+  "g4": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(V + E)",
+        "sc": "O(V)",
+        "desc": "Visits each vertex and adjacent edges, storing visited vertices in a queue."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(V + E)",
+        "sc": "O(V)",
+        "desc": "Uses a queue to explore vertices level by level, ensuring shortest path to all vertices from source."
+      }
+    ]
+  },
+  "g5": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(V + E)",
+        "sc": "O(V)",
+        "desc": "Visits each vertex and adjacent vertices recursively."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(V + E)",
+        "sc": "O(V)",
+        "desc": "Uses a stack for recursion, avoiding explicit recursive calls."
+      }
+    ]
+  },
+  "gbd2": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Check each cell and its neighbors to find connected components."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n*m)",
+        "sc": "O(n*m)",
+        "desc": "Use DFS or BFS to explore each component, marking visited cells to avoid revisiting."
+      }
+    ]
+  },
+  "gbd4": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n * m)",
+        "sc": "O(n + m)",
+        "desc": "Start from the target pixel and recursively change its color to the new color. Use a stack or queue for this DFS/BFS approach."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n * m)",
+        "sc": "O(n + m)",
+        "desc": "Use DFS or BFS to fill the region starting from the target pixel, ensuring no pixel is processed more than once."
+      }
+    ]
+  },
+  "gbd5": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(E * (V + E))",
+        "sc": "O(V)",
+        "desc": "Check each edge if it forms a cycle by performing BFS for each unvisited node."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(V + E)",
+        "sc": "O(V + E)",
+        "desc": "Use BFS to detect cycles. Track parent of each node and avoid revisiting the parent during BFS."
+      }
+    ]
+  },
+  "gbd6": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(E * V)",
+        "sc": "O(V)",
+        "desc": "Perform DFS for each unvisited vertex and check if a back edge is found. Use recursion or stack for DFS."
+      }
+    ]
+  },
+  "gbd8": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(m * n)",
+        "sc": "O(1)",
+        "desc": "Iterate through each cell. If an 'O' is found on the border or connected to a border, mark it as 'S'. Replace all remaining 'O's with 'X', then revert 'S' back to 'O'."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(m * n)",
+        "sc": "O(min(m, n))",
+        "desc": "Use BFS or DFS starting from border 'O's to mark connected components. Replace all 'O's that are not marked as 'S' with 'X', then revert 'S' back to 'O'."
+      }
+    ]
+  },
+  "gbd9": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(n)",
+        "desc": "The brute force approach involves iterating through each cell of the grid and performing a depth-first search (DFS) from each unvisited land cell. This DFS explores all reachable cells connected to it, marking them as visited."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n*m)",
+        "sc": "O(n*m)",
+        "desc": "The optimal solution uses a modified BFS (or DFS) approach starting from the boundary of the grid. By marking all cells connected to the boundary as visited, we ensure that only enclaves remain unvisited in the end."
+      }
+    ]
+  },
+  "gbd11": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(N * M^2 * W)",
+        "sc": "O(N * M * W)",
+        "desc": "Try all possible word transformations from start to end using BFS. For each transformation, check if the new word is valid and not visited before."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(N * M^2 * W)",
+        "sc": "O(N * M * W)",
+        "desc": "Use DFS with backtracking to explore all paths from start to end. Prune paths that are longer than the current shortest path and avoid revisiting words."
+      }
+    ]
+  },
+  "gbd12": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2 * m^2)",
+        "sc": "O(n*m)",
+        "desc": "Mark all cells of the grid and perform DFS to identify distinct islands. Compare each island's shape as a sequence of relative directions."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n*m)",
+        "sc": "O(n*m)",
+        "desc": "Use DFS to explore each island and record its shape by storing the relative positions from the start cell. Compare shapes using hash maps."
+      }
+    ]
+  },
+  "gbd13": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(V + E)",
+        "sc": "O(V + E)",
+        "desc": "Check each node for a bipartite property using DFS. If it can be colored with two colors without adjacent nodes having the same color, then it is bipartite."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(V + E)",
+        "sc": "O(V)",
+        "desc": "Use BFS to traverse the graph and attempt to color each node with one of two colors. If at any point an adjacent node has the same color, the graph is not bipartite."
+      }
+    ]
+  },
+  "gbd14": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(V + E)",
+        "sc": "O(V)",
+        "desc": "Attempt to color all nodes using two colors recursively and check for conflicts. If a conflict arises, return false; otherwise, true."
+      }
+    ]
+  },
+  "gtopo1": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(V + E)^2",
+        "sc": "O(V + E)",
+        "desc": "Iterate through all vertices and perform DFS for each unvisited vertex. This approach is inefficient due to the nested loops."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(V + E)",
+        "sc": "O(V + E)",
+        "desc": "Use Kahn's algorithm or iterative DFS to visit vertices based on in-degrees. Maintain a queue of vertices with zero in-degree and process them, reducing the in-degree of adjacent vertices."
+      }
+    ]
+  },
+  "gtopo2": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(V^2 + E)",
+        "sc": "O(V + E)",
+        "desc": "Iterate through each vertex and perform BFS for all vertices to find topological order."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(V + E)",
+        "sc": "O(V + E)",
+        "desc": "Use Kahn's Algorithm (BFS-based) to efficiently calculate in-degrees, enqueue nodes with zero in-degree, and process adjacent nodes."
+      }
+    ]
+  },
+  "gtopo4": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(V * (V + E))",
+        "sc": "O(V)",
+        "desc": "Check each vertex as a potential source and perform DFS to detect cycles. Use a visited set to avoid re-visiting vertices."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(V + E)",
+        "sc": "O(V)",
+        "desc": "Use DFS with a stack to detect cycles. Maintain three states: unvisited, visiting, and visited. If a vertex is revisited while in the 'visiting' state, a cycle exists."
+      }
+    ]
+  },
+  "gtopo6": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(n)",
+        "desc": "Iterate over all nodes and perform a depth-first search (DFS) to detect cycles. If no cycle is found, the node is considered safe."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n + m)",
+        "sc": "O(n + m)",
+        "desc": "Use topological sorting with Kahn's algorithm to identify nodes with zero in-degree and remove them. Repeat until all nodes are processed or a cycle is detected. Nodes remaining after processing form the safe states."
+      }
+    ]
+  },
+  "gtopo7": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(N^2 * M)",
+        "sc": "O(N + M)",
+        "desc": "Construct an adjacency list for the graph and perform a DFS or BFS for each node to detect cycles and sort nodes. This approach may revisit many nodes, leading to high complexity."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(V + E)",
+        "sc": "O(V + E)",
+        "desc": "Use Kahn's algorithm (BFS) to perform topological sorting by maintaining an in-degree count for each node and processing nodes with zero in-degree first. This ensures that all dependencies are processed before the current node."
+      }
+    ]
+  },
+  "gsp1": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Explore all possible paths using DFS or BFS to find the shortest path."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n + m log n)",
+        "sc": "O(n + m)",
+        "desc": "Use Dijkstra's algorithm, suitable for graphs with non-negative weights, to efficiently find the shortest path in an undirected graph with unit weights."
+      }
+    ]
+  },
+  "gsp2": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(V*(V+E))",
+        "sc": "O(V)",
+        "desc": "Compute shortest paths from a source vertex to all other vertices using Bellman-Ford for each vertex."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(V+E)",
+        "sc": "O(V)",
+        "desc": "Topological sort the graph, then relax edges in topological order using Dijkstra's algorithm."
+      }
+    ]
+  },
+  "gsp4": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n * m)",
+        "sc": "O(n)",
+        "desc": "The brute-force approach involves running a simple algorithm that iterates through all possible paths and updates distances accordingly. It checks each edge multiple times."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n * m)",
+        "sc": "O(n)",
+        "desc": "The optimal Bellman-Ford algorithm relaxes edges repeatedly until no further changes occur, ensuring the shortest path from the source to all other vertices is found efficiently."
+      }
+    ]
+  },
+  "gsp5": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^3)",
+        "sc": "O(n^2)",
+        "desc": "Naive approach involves using three nested loops to try every possible path between all pairs of vertices and updating the shortest path distance."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n^3)",
+        "sc": "O(n^2)",
+        "desc": "Floyd-Warshall algorithm uses dynamic programming to iteratively improve the shortest paths between all pairs of vertices by considering each vertex as an intermediate point."
+      }
+    ]
+  },
+  "gsp6": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Iterate through each city and compare it with every other city to count neighbors."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n + m log n)",
+        "sc": "O(n)",
+        "desc": "Use adjacency list, sort the neighbors of each city, then iterate to find the city with the smallest number of neighbors."
+      }
+    ]
+  },
+  "gsp7": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2 * m)",
+        "sc": "O(n)",
+        "desc": "Enumerate all possible paths from source to destination. Use Dijkstra's algorithm for each path."
+      },
+      {
+        "label": "optimal",
+        "tc": "O((n + m) log n)",
+        "sc": "O(n)",
+        "desc": "Use Dijkstra's algorithm to find the shortest path from the source to all other nodes. Then count the number of ways to reach each node by summing up the paths from its predecessors."
+      }
+    ]
+  },
+  "gsp8": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(n)",
+        "desc": "Use a simple BFS to explore all possible multiplications from start. Track distances and stop when the end is reached."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(log(maxVal) * n)",
+        "sc": "O(log(maxVal))",
+        "desc": "Apply Dijkstra's algorithm with a min-heap to find the minimum multiplications efficiently. Focus on minimizing distances to each node."
+      }
+    ]
+  },
+  "gsp9": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O((E + V) * K)",
+        "sc": "O(E + V)",
+        "desc": "Iterate through all possible paths from source to destination within K stops, checking each path's cost."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(V log E + E log V)",
+        "sc": "O(V + E)",
+        "desc": "Use Dijkstra's algorithm with a priority queue to find the shortest paths within K stops efficiently."
+      }
+    ]
+  },
+  "gmst1": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(E * V^2)",
+        "sc": "O(V + E)",
+        "desc": "Try every possible subset of edges and check if it forms a spanning tree. This approach is straightforward but inefficient."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(E log V)",
+        "sc": "O(V + E)",
+        "desc": "Use Kruskal's algorithm by sorting all edges in ascending order and then adding them to the MST if they don't form a cycle. This ensures an optimal solution."
+      }
+    ]
+  },
+  "gmst2": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(V^2)",
+        "sc": "O(V)",
+        "desc": "Check all possible edges and select the minimum weight edge each time. Use a visited set to track included vertices."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(E log V)",
+        "sc": "O(V + E)",
+        "desc": "Use a priority queue to always expand the least cost edge first, updating the MST and tracking edges' costs efficiently."
+      }
+    ]
+  },
+  "gmst3": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(n)",
+        "desc": "Use a simple adjacency list and perform union-find operations for each pair of vertices, checking if they are connected."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(log n) per operation",
+        "sc": "O(n)",
+        "desc": "Implement the disjoint set with path compression to flatten the structure, ensuring that future operations are faster by keeping each node's parent directly connected to a root."
+      }
+    ]
+  },
+  "gmst4": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(E^2)",
+        "sc": "O(1)",
+        "desc": "Sort all edges and check for cycles using DFS or BFS."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(E log E + V)",
+        "sc": "O(V + E)",
+        "desc": "Sort edges, use a disjoint set to track connected components, and add non-cycling edges one by one."
+      }
+    ]
+  },
+  "gmst6": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Check every pair of stones and remove them if they are in the same row or column. Repeat until no more can be removed."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n log n)",
+        "sc": "O(n)",
+        "desc": "Sort rows and columns by frequency. Remove stones from the most frequent row or column first, then proceed to less frequent ones."
+      }
+    ]
+  },
+  "gmst7": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2 * log n)",
+        "sc": "O(n)",
+        "desc": "For each account, check all other accounts to find duplicates. Use a set to store unique emails."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(E + V log V)",
+        "sc": "O(V + E)",
+        "desc": "Use union-find data structure to group duplicate accounts efficiently. Initialize sets for each email and perform union operations based on common emails in different accounts."
+      }
+    ]
+  },
+  "gmst8": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(m * n * (m + n))",
+        "sc": "O(1)",
+        "desc": "Iterate through each cell and perform a DFS for every unvisited island, counting the number of unique islands."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(m * n)",
+        "sc": "O(m * n)",
+        "desc": "Use Union-Find to efficiently manage island connections, merging sets when adjacent land cells are encountered and counting distinct sets at the end."
+      }
+    ]
+  },
+  "gmst9": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2 * m^2)",
+        "sc": "O(1)",
+        "desc": "Naively try merging each island with every other island to find the largest resulting island."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n * m)",
+        "sc": "O(n * m)",
+        "desc": "First, use DFS to calculate the size of each island and mark them uniquely. Then, iterate through the grid again to add the sizes of adjacent islands to find the largest possible island."
+      }
+    ]
+  },
+  "gmst10": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(m * n)",
+        "sc": "O(m * n)",
+        "desc": "Explore all possible paths using BFS or DFS starting from each cell. Track visited cells and the maximum time taken."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(m * n log(m * n))",
+        "sc": "O(m * n)",
+        "desc": "Use a priority queue to always expand the path with the least maximum time first, ensuring an efficient search for the safest path."
+      }
+    ]
+  },
+  "goa2": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(V * (V + E))",
+        "sc": "O(V)",
+        "desc": "Check every vertex as a potential articulation point and perform DFS to find bridges."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(V + E)",
+        "sc": "O(V + E)",
+        "desc": "Use DFS to traverse the graph, keeping track of discovery times and low values to identify articulation points efficiently."
+      }
+    ]
+  },
+  "goa3": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(n^2)",
+        "desc": "Simply traverse all possible pairs of nodes to check for mutual reachability."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n + m)",
+        "sc": "O(n + m)",
+        "desc": "Use DFS twice: first, in reverse graph order to find the finish times; second, to explore components based on these times."
+      }
+    ]
+  },
+  "dp1": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(n)",
+        "desc": "Naively computes subproblems recursively without storing results."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n^2)",
+        "sc": "O(n^2)",
+        "desc": "Uses memoization to store and reuse the results of subproblems for efficient computation."
+      }
+    ]
+  },
+  "dp3": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Check all possible jumps from each position to see if they reach the end."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Maintain a variable to track the farthest point that can be reached with one jump, and iterate through the array updating this variable accordingly."
+      }
+    ]
+  },
+  "dp4": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^k)",
+        "sc": "O(n)",
+        "desc": "Calculate all possible paths from the starting point to the end by considering each jump of up to K distances. Use recursion and store results in a DP array to avoid redundant calculations."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n*k)",
+        "sc": "O(n)",
+        "desc": "Iterate through the array, for each position, determine the minimum jumps needed to reach that position by considering all possible jumps of up to K distances from previous positions. Use a DP array to store the minimum jumps needed to reach each position."
+      }
+    ]
+  },
+  "dp7": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^3)",
+        "sc": "O(1)",
+        "desc": "Try all possible combinations of tasks for each day. For each task combination, calculate the maximum points earned."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Use dynamic programming to keep track of the maximum points that can be earned up to the current day by choosing different tasks. Update the DP array based on the points from the previous days."
+      }
+    ]
+  },
+  "dp2d2": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(m * n * 2^(m+n))",
+        "sc": "O(m + n)",
+        "desc": "Try all paths from start to end and count those without obstacles."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(m * n)",
+        "sc": "O(m * n)",
+        "desc": "Use dynamic programming to fill a grid where each cell represents the number of unique paths to reach that cell, avoiding obstacles."
+      }
+    ]
+  },
+  "dp2d4": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^3)",
+        "sc": "O(n^2)",
+        "desc": "Check all possible paths from top to bottom and keep track of the minimum sum encountered."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Start from the second last row and for each element, calculate the minimum path sum by adding it to its two possible children. Repeat this process up to the top of the triangle."
+      }
+    ]
+  },
+  "dp2d5": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(m * n)",
+        "sc": "O(1)",
+        "desc": "Calculate all possible paths from each cell to the bottom right corner and keep track of the maximum sum."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(m * n)",
+        "sc": "O(n)",
+        "desc": "Use dynamic programming to store the maximum path sum up to each column in a single array, updating it as you iterate through the matrix."
+      }
+    ]
+  },
+  "dp2d6": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O((n^2)^3)",
+        "sc": "O((n^2)^3)",
+        "desc": "Collect all chocolates by moving two agents independently on a grid. Try every possible path combination for both agents."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n^6)",
+        "sc": "O(n^4)",
+        "desc": "Use dynamic programming to store the maximum number of chocolates collected by two agents at each cell, considering all possible moves from previous states."
+      }
+    ]
+  },
+  "dps1": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(2^n)",
+        "sc": "O(n)",
+        "desc": "Iterate through all possible subsets of the array and check if their sum equals the target."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(nt)",
+        "sc": "O(t)",
+        "desc": "Use dynamic programming to build a table where dp[i][j] indicates whether there's a subset of the first i elements that sums up to j."
+      }
+    ]
+  },
+  "dps3": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(2^n)",
+        "sc": "O(n)",
+        "desc": "Generate all possible subsets of the set and calculate their sums. Compare the absolute differences of sums between pairs of subsets."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n * sum/2)",
+        "sc": "O(sum/2)",
+        "desc": "Use dynamic programming to find the minimum subset sum closest to half of the total set sum. This allows partitioning into two subsets with minimized absolute sum difference."
+      }
+    ]
+  },
+  "dps4": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n * 2^n)",
+        "sc": "O(n)",
+        "desc": "Iterate through all subsets using bit manipulation to check their sums. Use an array to store intermediate results."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n * k)",
+        "sc": "O(k)",
+        "desc": "Use dynamic programming with a one-dimensional table to count subsets that sum up to k. Iterate through each number and update the table from back to front."
+      }
+    ]
+  },
+  "dps5": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(2^n)",
+        "sc": "O(n)",
+        "desc": "Generate all possible partitions and count those with the given difference."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(sum * n)",
+        "sc": "O(sum)",
+        "desc": "Transform the problem into finding subsets with a specific sum. Use dynamic programming to solve it efficiently."
+      }
+    ]
+  },
+  "dps6": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(2^n)",
+        "sc": "O(n)",
+        "desc": "Consider all subsets of items and calculate their total weight and value. For each subset, if the weight is less than or equal to the knapsack capacity, update the maximum value."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(Wn)",
+        "sc": "O(W)",
+        "desc": "Use dynamic programming to build a table where dp[i][w] represents the maximum value that can be obtained with the first i items and a knapsack capacity of w. Iterate through each item and update the table based on whether to include the current item or not."
+      }
+    ]
+  },
+  "dps8": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(2^n)",
+        "sc": "O(n)",
+        "desc": "Try all subsets by recursively including or excluding each element."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n * target)",
+        "sc": "O(target)",
+        "desc": "Use a DP array to store the number of ways to achieve each possible sum up to the target."
+      }
+    ]
+  },
+  "dps10": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(2^n)",
+        "sc": "O(n)",
+        "desc": "Consider each item either included or not. This leads to exponential possibilities."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(w * n)",
+        "sc": "O(w)",
+        "desc": "Use dynamic programming with a table where each cell represents the maximum value that can be achieved with a given weight limit."
+      }
+    ]
+  },
+  "dps11": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(n^2)",
+        "desc": "Cut the rod at every possible position and recursively solve for the remaining length. Store results in a table to avoid redundant calculations."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n^2)",
+        "sc": "O(n)",
+        "desc": "Use dynamic programming to build up a solution by iterating through lengths of the rod and choosing the optimal cut that maximizes profit. Store only the previous row's results in an array for space optimization."
+      }
+    ]
+  },
+  "dpstr2": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(m*n)",
+        "sc": "O(m*n)",
+        "desc": "Compare all subsequences of two strings to find the longest common one."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(m*n)",
+        "sc": "O(m*n)",
+        "desc": "Use a 2D DP table where dp[i][j] represents the length of LCS of X[0..i-1] and Y[0..j-1]."
+      }
+    ]
+  },
+  "dpstr3": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^3)",
+        "sc": "O(1)",
+        "desc": "Check all possible substrings of both strings for equality. This involves three nested loops."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n^2)",
+        "sc": "O(n^2)",
+        "desc": "Use a 2D DP table to store the lengths of common suffixes of substrings, updating the maximum length found."
+      }
+    ]
+  },
+  "dpstr4": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^3)",
+        "sc": "O(1)",
+        "desc": "Check all possible subsequences of the string and find the longest palindromic one."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n^2)",
+        "sc": "O(n^2)",
+        "desc": "Use dynamic programming to build a table where dp[i][j] represents the length of the longest palindromic subsequence in s[i...j]. Fill the table based on whether characters match or not."
+      }
+    ]
+  },
+  "dpstr5": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^3)",
+        "sc": "O(1)",
+        "desc": "Try all possible substrings and check if they are palindromes. If not, insert characters to make them palindrome."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n^2)",
+        "sc": "O(n^2)",
+        "desc": "Use dynamic programming to build a table that stores the minimum number of insertions needed for substrings. Fill the table based on whether characters match and update accordingly."
+      }
+    ]
+  },
+  "dpstr6": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^3)",
+        "sc": "O(1)",
+        "desc": "Try all possible subsequences of both strings and find the longest common subsequence (LCS). Minimum insertions/deletions = n + m - 2*LCS."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n*m)",
+        "sc": "O(n*m)",
+        "desc": "Use dynamic programming to build a table where dp[i][j] represents the LCS length for substrings str1[0..i-1] and str2[0..j-1]. Fill the table in bottom-up manner. Minimum insertions/deletions = n + m - 2*dp[n][m]."
+      }
+    ]
+  },
+  "dpstr7": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(2^n)",
+        "sc": "O(n)",
+        "desc": "Generate all subsequences of both strings and find the shortest common subsequence by comparing lengths."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(m * n)",
+        "sc": "O(m * n)",
+        "desc": "Use dynamic programming to build a table where dp[i][j] represents the length of the SCS of X[0..i-1] and Y[0..j-1]. Fill the table by comparing characters and choosing the minimum path."
+      }
+    ]
+  },
+  "dpstr8": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(n^2)",
+        "desc": "Generate all subsequences and use a set to ensure uniqueness."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(m*n)",
+        "sc": "O(n)",
+        "desc": "Use dynamic programming with two arrays, where one tracks counts and the other stores last seen indices of characters."
+      }
+    ]
+  },
+  "dpstr10": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(m*n)",
+        "sc": "O(1)",
+        "desc": "Check every possible substring against the pattern using recursion with backtracking."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(m*n)",
+        "sc": "O(m*n)",
+        "desc": "Use dynamic programming to build a table where each cell (i, j) indicates if the first i characters of the string match the first j characters of the pattern."
+      }
+    ]
+  },
+  "dpstk1": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Buy and sell stock on every possible pair of days. Track maximum profit."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Track min price so far, calculate current profit if sold at current price, update max profit accordingly."
+      }
+    ]
+  },
+  "dpstk4": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2 * k)",
+        "sc": "O(k)",
+        "desc": "Iterate over all possible pairs of transactions and keep track of the maximum profit up to each pair."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n * k)",
+        "sc": "O(k)",
+        "desc": "Use dynamic programming to maintain the maximum profit after each transaction, updating it as we iterate through the prices."
+      }
+    ]
+  },
+  "dpstk5": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Simulate all possible buy and sell actions, including cooldown periods."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Track the max profit for three states: holding a stock, not holding but on cooldown, and not holding or cooling down."
+      }
+    ]
+  },
+  "dpstk6": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Iterate through all possible buy and sell days, keeping track of the maximum profit with transaction fee."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Maintain two variables for holding the minimum cost and maximum profit at each step, updating them as you iterate through the prices while accounting for the transaction fee."
+      }
+    ]
+  },
+  "dplis2": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(n^2)",
+        "desc": "Generate all subsequences and check for each if it's increasing. Track the longest one."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n log n)",
+        "sc": "O(n)",
+        "desc": "Use dynamic programming to keep track of the length of the longest subsequence up to each element, using binary search to find insertion points efficiently."
+      }
+    ]
+  },
+  "dplis3": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(n)",
+        "desc": "Generate all possible subsequences and find the longest increasing subsequence among them."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n log n)",
+        "sc": "O(n)",
+        "desc": "Use dynamic programming with binary search to efficiently build and maintain the longest increasing subsequence."
+      }
+    ]
+  },
+  "dplis4": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2 * n)",
+        "sc": "O(n * n)",
+        "desc": "Generate all subsets and check divisibility. Use dynamic programming to store the largest divisible subset for each number."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n log n) + O(n^2)",
+        "sc": "O(n)",
+        "desc": "Sort numbers first, then use a DP array where dp[i] stores the size of largest divisible subset ending with nums[i]. Iterate through each number and update the DP array accordingly."
+      }
+    ]
+  },
+  "dplis5": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^3)",
+        "sc": "O(1)",
+        "desc": "Sort words by length and try to build chains starting from each word. Check if removing one character from a longer word forms the current word."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n^2 * k)",
+        "sc": "O(n)",
+        "desc": "Sort words by length, then for each word, check all possible chains ending with that word by removing one character. Use dynamic programming to store and reuse results."
+      }
+    ]
+  },
+  "dplis6": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^3)",
+        "sc": "O(1)",
+        "desc": "Generate all subsequences and check if they are bitonic by verifying increasing followed by decreasing order."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n^2)",
+        "sc": "O(n)",
+        "desc": "Use two DP arrays to store the length of the longest increasing subsequence (LIS) and longest decreasing subsequence (LDS) ending at each index. The result is the maximum value of LIS[i] + LDS[i] - 1 for all i."
+      }
+    ]
+  },
+  "dplis7": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^3)",
+        "sc": "O(n)",
+        "desc": "Check all subsequences for increasing order and keep track of the longest ones."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n log n)",
+        "sc": "O(n)",
+        "desc": "Sort elements based on value while preserving original indices, then use dynamic programming to count LIS ending at each element."
+      }
+    ]
+  },
+  "dpmcm1": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^3)",
+        "sc": "O(1)",
+        "desc": "Naive approach involves trying all possible ways to parenthesize the matrix chain and computing the product recursively."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n^3)",
+        "sc": "O(n^2)",
+        "desc": "Optimal algorithm uses dynamic programming to store results of subproblems, avoiding redundant calculations by breaking down the problem into smaller, manageable parts."
+      }
+    ]
+  },
+  "dpmcm2": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^3)",
+        "sc": "O(n^2)",
+        "desc": "Naively calculates the minimum number of multiplications by considering all possible ways to parenthesize the matrix chain."
+      }
+    ]
+  },
+  "dpmcm3": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^3)",
+        "sc": "O(n^2)",
+        "desc": "Try all possible cuts and recursively calculate the cost for each cut."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n^3)",
+        "sc": "O(n^2)",
+        "desc": "Use dynamic programming to store the minimum cost for cutting sticks between any two points."
+      }
+    ]
+  },
+  "dpmcm5": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(n)",
+        "desc": "Naively check all possible combinations of parentheses to evaluate the expression."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n^3)",
+        "sc": "O(n^2)",
+        "desc": "Use dynamic programming to store intermediate results and avoid redundant calculations, optimizing the brute force approach."
+      }
+    ]
+  },
+  "dpmcm6": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^3)",
+        "sc": "O(n^2)",
+        "desc": "Iterate through all possible partitions and check if each substring is a palindrome. Count the minimum cuts needed for palindromic partitions."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n^2)",
+        "sc": "O(n^2)",
+        "desc": "Use dynamic programming to build a table that checks if substrings are palindromes and another table to store the minimum cuts. Fill these tables iteratively."
+      }
+    ]
+  },
+  "dpmcm7": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(n)",
+        "desc": "Check all possible partitions and calculate their sums. Track the maximum sum."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n)",
+        "sc": "O(1)",
+        "desc": "Use a single pass to find the partition that maximizes the sum based on a greedy approach."
+      }
+    ]
+  },
+  "dpsq2": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^3)",
+        "sc": "O(1)",
+        "desc": "Check every submatrix if all elements are ones."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n^2)",
+        "sc": "O(n^2)",
+        "desc": "Use dynamic programming to count the size of squares ending at each cell."
+      }
+    ]
+  },
+  "t2": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n*m*k)",
+        "sc": "O(n*m)",
+        "desc": "Build a Trie from all words. For each query, traverse the Trie to count matching prefix and word."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(k) per query",
+        "sc": "O(1)",
+        "desc": "During insertion, maintain two additional counters: one for total words ending at a node and another for total nodes in the subtree. This allows quick queries of word count and prefix count."
+      }
+    ]
+  },
+  "t3": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Check each prefix of every string and keep track of the longest valid one."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n * m + n * log n)",
+        "sc": "O(m)",
+        "desc": "Sort strings lexicographically, then compare consecutive strings to find the longest common prefix starting from the first character of each."
+      }
+    ]
+  },
+  "t4": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^3)",
+        "sc": "O(1)",
+        "desc": "Generate all possible substrings and store them in a set to ensure uniqueness. Count the number of elements in the set."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n^2 * log n)",
+        "sc": "O(n^2)",
+        "desc": "Use a Trie to insert all substrings and count nodes, which represent distinct substrings. Inserting each substring into the Trie takes linear time in the length of the substring."
+      }
+    ]
+  },
+  "t5": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2 * k)",
+        "sc": "O(k)",
+        "desc": "Check all pairs of numbers and compute their XOR. This results in a nested loop where each number is paired with every other number."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n * k)",
+        "sc": "O(k^2)",
+        "desc": "Use a Trie to store the binary representations of numbers. Traverse the Trie for each number and count XOR values, utilizing the properties of Trie nodes to efficiently find the maximum XOR pair."
+      }
+    ]
+  },
+  "t7": {
+    "steps": [
+      {
+        "label": "brute",
+        "tc": "O(n^2)",
+        "sc": "O(1)",
+        "desc": "Iterate through all pairs of elements and compute their XOR. Track the maximum XOR found."
+      },
+      {
+        "label": "optimal",
+        "tc": "O(n log m)",
+        "sc": "O(m)",
+        "desc": "Use a trie to store the binary representation of numbers. For each number, find the maximum XOR with another number in the trie by considering complementary bits."
+      }
+    ]
+  }
+}
