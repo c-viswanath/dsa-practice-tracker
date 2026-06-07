@@ -8776,34 +8776,7 @@ window.openNote = (e, id) => {
   state._panelMeta = { id, name: p.name, lc, tuf, nc };
 
   document.getElementById('notes-title').textContent = p.name;
-  
-function highlightPython(code) {
-  // Lightweight Python syntax highlighting
-  const keywords = /\b(def|return|if|elif|else|for|while|in|not|and|or|is|None|True|False|import|from|class|pass|break|continue|yield|lambda|with|as|try|except|finally|raise|del|global|nonlocal|assert)\b/g;
-  const builtins = /\b(len|range|print|int|str|float|list|dict|set|tuple|min|max|sum|sorted|reversed|enumerate|zip|map|filter|abs|round|type|isinstance|append|pop|push|heapq|defaultdict|Counter|deque|inf|math)\b/g;
-  const funcDef  = /\bdef (\w+)/g;
-  const comments = /(#[^\n]*)/g;
-  const strings  = /("[^"]*"|'[^']*')/g;
-  const numbers  = /\b(\d+\.?\d*)\b/g;
-  // Order matters: comments first, then strings, then rest
-  return code
-    .replace(comments, '<span class="cm">$1</span>')
-    .replace(strings,  '<span class="st">$1</span>')
-    .replace(keywords, '<span class="kw">$1</span>')
-    .replace(builtins, '<span class="bi">$1</span>')
-    .replace(funcDef,  'def <span class="fn">$1</span>')
-    .replace(numbers,  '<span class="nu">$1</span>');
-}
-
-window.copyCode = (btn, code) => {
-  navigator.clipboard.writeText(code).then(() => {
-    const s = btn.querySelector('span');
-    s.textContent = 'copied!';
-    s.classList.add('copied');
-    setTimeout(() => { s.textContent = 'copy'; s.classList.remove('copied'); }, 1500);
-  });
-};
-document.getElementById('notes-textarea').value = state.notes[id] || '';
+  document.getElementById('notes-textarea').value = state.notes[id] || '';
 
   const extIcon = `<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>`;
   let links = '';
@@ -8814,34 +8787,7 @@ document.getElementById('notes-textarea').value = state.notes[id] || '';
 
   document.getElementById('notes-panel').classList.add('open');
   window.switchTab(state.activeTab || 'notes');
-  if (state.activeTab !== 'solution') 
-function highlightPython(code) {
-  // Lightweight Python syntax highlighting
-  const keywords = /\b(def|return|if|elif|else|for|while|in|not|and|or|is|None|True|False|import|from|class|pass|break|continue|yield|lambda|with|as|try|except|finally|raise|del|global|nonlocal|assert)\b/g;
-  const builtins = /\b(len|range|print|int|str|float|list|dict|set|tuple|min|max|sum|sorted|reversed|enumerate|zip|map|filter|abs|round|type|isinstance|append|pop|push|heapq|defaultdict|Counter|deque|inf|math)\b/g;
-  const funcDef  = /\bdef (\w+)/g;
-  const comments = /(#[^\n]*)/g;
-  const strings  = /("[^"]*"|'[^']*')/g;
-  const numbers  = /\b(\d+\.?\d*)\b/g;
-  // Order matters: comments first, then strings, then rest
-  return code
-    .replace(comments, '<span class="cm">$1</span>')
-    .replace(strings,  '<span class="st">$1</span>')
-    .replace(keywords, '<span class="kw">$1</span>')
-    .replace(builtins, '<span class="bi">$1</span>')
-    .replace(funcDef,  'def <span class="fn">$1</span>')
-    .replace(numbers,  '<span class="nu">$1</span>');
-}
-
-window.copyCode = (btn, code) => {
-  navigator.clipboard.writeText(code).then(() => {
-    const s = btn.querySelector('span');
-    s.textContent = 'copied!';
-    s.classList.add('copied');
-    setTimeout(() => { s.textContent = 'copy'; s.classList.remove('copied'); }, 1500);
-  });
-};
-document.getElementById('notes-textarea').focus();
+  if (state.activeTab !== 'solution') document.getElementById('notes-textarea').focus();
 };
 
 window.closeNotes = () => {
@@ -8915,6 +8861,20 @@ function renderSolution() {
     <div class="sol-cards">${cardsHtml}</div>`;
 }
 
+document.getElementById('notes-textarea').addEventListener('input', function() {
+  const id = state.activeNoteId;
+  if (!id) return;
+  state.notes[id] = this.value;
+  clearTimeout(notesSaveTimeout);
+  notesSaveTimeout = setTimeout(() => {
+    scheduleSave();
+    const ind = document.getElementById('saved-indicator');
+    ind.classList.add('show');
+    setTimeout(() => ind.classList.remove('show'), 1500);
+    renderMain();
+  }, 600);
+});
+
 
 function highlightPython(code) {
   // Lightweight Python syntax highlighting
@@ -8942,20 +8902,6 @@ window.copyCode = (btn, code) => {
     setTimeout(() => { s.textContent = 'copy'; s.classList.remove('copied'); }, 1500);
   });
 };
-document.getElementById('notes-textarea').addEventListener('input', function() {
-  const id = state.activeNoteId;
-  if (!id) return;
-  state.notes[id] = this.value;
-  clearTimeout(notesSaveTimeout);
-  notesSaveTimeout = setTimeout(() => {
-    scheduleSave();
-    const ind = document.getElementById('saved-indicator');
-    ind.classList.add('show');
-    setTimeout(() => ind.classList.remove('show'), 1500);
-    renderMain();
-  }, 600);
-});
-
 document.getElementById('search-input').addEventListener('input', function() {
   state.search = this.value;
   renderMain();
